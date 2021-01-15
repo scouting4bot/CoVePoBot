@@ -31,6 +31,8 @@ def setupCreateVoteSession():
     vote_id = request.args.get('id', '')
     otp_num = request.args.get('num', '')
     try:
+        if otp_num is None or otp_num == '':
+            otp_num = '0'
         otp_num = int(otp_num)
     except ValueError:
         return "NUM non è un numero valido", 400
