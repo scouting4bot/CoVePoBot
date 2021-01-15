@@ -37,8 +37,7 @@ def setupCreateVoteSession():
     except ValueError:
         return "NUM non è un numero valido", 400
 
-    msg, http_code = createVoteSession(vote_id, otp_num)
-    return msg, http_code
+    return createVoteSession(vote_id, otp_num)
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/additionalotp')
@@ -57,27 +56,57 @@ def setupAddOtps(vote_id):
     except ValueError:
         return "NUM non è un numero valido", 400
 
-    msg, http_code = addOtps(vote_id, otp_num)
-    return msg, http_code
+    return addOtps(vote_id, otp_num)
 
 #-----------------------------------------------------------------------
-@app.route('/CoVePoBot/<vote_id>/secret')
+@app.route('/CoVePoBot/<vote_id>/secret/<otp>')
+def disableSecret(vote_id, otp):
+    """ Disables a secret. """
+    
+    #validate vote_id
+    if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
+        result = "Votazione non valida"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
+    
+    #validate password
+    psw = request.args.get('password', '')
+    if psw is None or psw == '' or psw != vote_session_list[vote_id]["psw"]:
+        return 'Non sei autorizzato', 403
+    
+    #validate secret
+    if otp is None or otp == '' or extractDictValue(otp, vote_session_list[vote_id]['otps']) is None:
+        result = "Secret non valido"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
+    
+    secret = getSecret(vote_id, otp, 10)
+
+    if extractDictValue(secret, vote_session_list[vote_id]['secrets']) is None:
+        result = "Secret non valido"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
+
+    vote_session_list[vote_id]['secrets'][secret] = 'expired'
+
+    #create the requested csv
+    return "Secret disabilitato", 200
+
+#-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/secrets')
 @app.route('/CoVePoBot/<vote_id>/secrets/')
 def getSecretCSV(vote_id):
     """ Return a list of activated secrets. """
-
+    
+    #validate vote_id
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
-        result = "votazione non valida"
-        http_code = 409
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", http_code
+        result = "Votazione non valida"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
+    
     #check password
     psw = request.args.get('password', '')
     if psw is None or psw == '' or psw != vote_session_list[vote_id]["psw"]:
         return 'Non sei autorizzato', 403
 
     #create the requested csv
-    return csvFromDict(vote_session_list[vote_id]["secrets"]), 200
+    return csvFromDictOfAvailable(vote_session_list[vote_id]["secrets"]), 200
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/otps')
@@ -85,10 +114,10 @@ def getSecretCSV(vote_id):
 def getOtpCSV(vote_id):
     """ Return a list of available otps. """
 
+    #validate vote_id
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
-        result = "votazione non valida"
-        http_code = 409
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", http_code
+        result = "Votazione non valida"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
 
     #check password
     psw = request.args.get('password', '')
@@ -104,8 +133,8 @@ def autorizeOtp(vote_id, otp):
     """ Given an OTP, validates it and provides a secret. """
     if otp is None:
         otp = request.args.get('otp', '')
-    msg, http_code = convertOtp(vote_id, otp)
-    return msg, http_code
+
+    return convertOtp(vote_id, otp)
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/otp')
@@ -120,36 +149,33 @@ def convertOtp(vote_id, otp):
     """ Check if the otp is valid. """
 
     #validate vote_id
-    http_code = 200
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
         vote_id = ''
-        result = "votazione non valida"
-        http_code = 409
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", http_code
+        result = "Votazione non valida"
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 409
     #validate otp
     elif otp is None or otp == '':
         result = "Codice otp mancante"
-        http_code = 400
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", http_code
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 400
     #check that the otp exists
     elif extractDictValue(otp, vote_session_list[vote_id]['otps']) is None or vote_session_list[vote_id]['otps'][otp] == 'expired':
         result = "Codice otp non valido"
-        http_code = 403
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", http_code
+        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", 403
     #convert otp into a secret
     else:
-        result = getTimeHash(10)
+        secret = getSecret(vote_id, otp, 10)
         vote_session_list[vote_id]['otps'][otp] = 'expired'
-        vote_session_list[vote_id]['secrets'][result] = 'enabled'
+        vote_session_list[vote_id]['secrets'][secret] = 'enabled'
         print(vote_session_list)
-        return "Il tuo codice è " + result + " e ti servirà per votare alla "+vote_id+".\n Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", http_code
+        return "Il tuo codice è " + secret + " e ti servirà per votare alla "+vote_id+".\n Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
 
+def getSecret(vote_id, otp, digits):
+    return getHash(app_short_name+otp+vote_id+otp, digits)
 
 def createVoteSession(vote_id, otp_num):
     """ Adds a vote session to the vote_session_list """
 
     #check if the key already exists
-    http_code = 200
     if vote_id is None or vote_id == '':
         return "ID non valido", 400
     elif extractDictValue(vote_id, vote_session_list) is not None:
@@ -162,10 +188,9 @@ def createVoteSession(vote_id, otp_num):
 
             #extract the list of new otps to  return in the response
             otps_csv = csvFromDict(vote_session_list[vote_id]["otps"])
-            return "Aggiunta la nuova sessione "+vote_id+". Usa come password per la gestione: "+psw+"\nGli otp disponibili sono: "+otps_csv, http_code
+            return "Aggiunta la nuova sessione "+vote_id+". Usa come password per la gestione: "+psw+"\nGli otp disponibili sono: "+otps_csv, 200
         else:
-            http_code = 500
-            return result, http_code
+            return result, 500
 
 
 def csvFromDict(dict):
@@ -191,12 +216,11 @@ def csvFromDictOfAvailable(dict):
 
 def getNewVoteSession(vote_id, otp_num):
     """ Creates a new Vote Session with its set of otps. """
+    psw = getHash(time.time(), 10)
     if otp_num is None or otp_num == '':
-        psw = getTimeHash(10)
         return True, {"id":vote_id, "psw":psw}, psw
     else:
         otps = createOtps(otp_num)
-        psw = getTimeHash(10)
         return True, {"id":vote_id, "psw":psw, "otps":otps, "secrets":{}}, psw
 
 
@@ -210,11 +234,11 @@ def createOtps(otp_num):
     return otps
 
 
-def getTimeHash(digits):
+def getHash(input, digits):
     #create hash
     hash = hashlib.sha256()
     #convert time into hash
-    hash.update(str(time.time()).encode('utf-8'))
+    hash.update(str(input).encode('utf-8'))
     #keep only first 10 chars of hash.hexdigest()
     return hash.hexdigest()[:digits]
 
@@ -254,7 +278,6 @@ def calcMax(digits_num):
 
 def addOtps(vote_id, otp_num):
     """ Adds more otps to the voting session. """
-    http_code = 200
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
         return "ID non valido", 400
     
@@ -264,4 +287,4 @@ def addOtps(vote_id, otp_num):
 
     #extract the list of new otps to  return in the response
     otps_csv = csvFromDict(otps)
-    return "La sessione "+vote_id+" è stata aggiornata.\nI nuovi otp disponibili sono: "+otps_csv, http_code
+    return "La sessione "+vote_id+" è stata aggiornata.\nI nuovi otp disponibili sono: "+otps_csv, 200

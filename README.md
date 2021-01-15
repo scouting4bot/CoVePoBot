@@ -55,6 +55,14 @@ Amministrazione
   > La sessione XXX è stata aggiornata.
   > I nuovi otp disponibili sono: 098765,987654,876543
 
+### Rimozione di un secret ###
+* La CoVePo può annullare un secret a partire dal relativo OTP.
+  > http://DOMINIO/CoVePoBot/XXX/secret/OOO/?password=ZZZ
+* esempio di risposta:
+  > Secret disabilitato
+
+  /CoVePoBot/<vote_id>/secret/<secret>
+
 Come si attiva l’OTP
 --------
 * L'utente dovrà chiamare un URL da browser come il seguente (sostituire OOO con l'OTP)
