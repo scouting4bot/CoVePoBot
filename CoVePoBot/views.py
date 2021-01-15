@@ -162,7 +162,7 @@ def createVoteSession(vote_id, otp_num):
 
             #extract the list of new otps to  return in the response
             otps_csv = csvFromDict(vote_session_list[vote_id]["otps"])
-            return "Aggiunta la nuova sessione "+vote_id+". Usa come password per la gestione: "+psw+"\nGli otp disponibili sono:"+otps_csv, http_code
+            return "Aggiunta la nuova sessione "+vote_id+". Usa come password per la gestione: "+psw+"\nGli otp disponibili sono: "+otps_csv, http_code
         else:
             http_code = 500
             return result, http_code
@@ -264,4 +264,4 @@ def addOtps(vote_id, otp_num):
 
     #extract the list of new otps to  return in the response
     otps_csv = csvFromDict(otps)
-    return "La sessione "+vote_id+" è stata aggiornata.\nI nuovi otp disponibili sono:"+otps_csv, http_code
+    return "La sessione "+vote_id+" è stata aggiornata.\nI nuovi otp disponibili sono: "+otps_csv, http_code

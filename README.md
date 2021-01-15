@@ -32,7 +32,7 @@ Amministrazione
   > http://DOMINIO/CoVePoBot/session?id=XXX&num=YYY
 * esempio di risposta:
   > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
-  > Gli otp disponibili sono:123456,234567,345678,456789,567890
+  > Gli otp disponibili sono: 123456,234567,345678,456789,567890
 
 ### Recupero della lista di "secret" attivati ###
 * La CoVePo può recuperare la lista dei secret attivati dagli utenti.
@@ -53,7 +53,7 @@ Amministrazione
   > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&num=YYY
 * esempio di risposta:
   > La sessione XXX è stata aggiornata.
-  > I nuovi otp disponibili sono:098765,987654,876543
+  > I nuovi otp disponibili sono: 098765,987654,876543
 
 Come si attiva l’OTP
 --------
