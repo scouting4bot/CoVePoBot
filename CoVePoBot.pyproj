@@ -41,6 +41,7 @@
     <Content Include="CoVePoBot\static\conf\settings.json" />
     <Content Include="CoVePoBot\static\conf\logger.json" />
     <Content Include="CoVePoBot\static\conf\app.json" />
+    <Content Include="README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
