@@ -18,18 +18,18 @@ Esempi
 --------
 * Gli url riportati di seguito possono essere testati sostituendo "DOMINIO" con "effedici.pythonanywhere.com"
 * Negli esempi di seguito è stata usata la seguente convenzione:
-  * XXX = nome della sessione (influirà sugli url per la conversione)
-  * YYY = numero di otp da attivare
-  * ZZZ = password di amministrazione fornita da CoVePoBot alla creazione della nuova sessione di voto
-  * OOO = OTP da convertire in secret
-  * SSS = il secret ottenuto dalla conversione dell'OTP
+  * XXX = alfanumerico, è il nome della sessione (influirà sugli url per la conversione)
+  * YYY = numerico, è il numero di otp da attivare
+  * ZZZ = alfanumerico, è la password di amministrazione fornita da CoVePoBot alla creazione della nuova sessione di voto
+  * OOO = numerico, è l'OTP da convertire in secret
+  * SSS = alfanumerico, è il secret ottenuto dalla conversione dell'OTP
 
 Amministrazione
 --------
 ### Creazione di una nuova sessione di voto ###
 (es: un'assemblea)
 * La CoVePo può attivare una nuova sessione di voto invocando l'url
-  > http://DOMINIO/CoVePoBot/setup/aggiungi?id=XXX&num=YYY
+  > http://DOMINIO/CoVePoBot/session?id=XXX&num=YYY
 * esempio di risposta:
   > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
   > Gli otp disponibili sono:123456,234567,345678,456789,567890
@@ -47,6 +47,13 @@ Amministrazione
   > http://DOMINIO/CoVePoBot/XXX/otps/?password=ZZZ
 * esempio di risposta:
   > 234567,345678,456789,567890
+
+### Aggiunta di ulteriori OTP alla sessione di voto ###
+* La CoVePo può aggiungere nuovi OTP alla sessione di voto.
+  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&num=YYY
+* esempio di risposta:
+  > La sessione XXX è stata aggiornata.
+  > I nuovi otp disponibili sono:098765,987654,876543
 
 Come si attiva l’OTP
 --------
@@ -69,6 +76,5 @@ Sviluppi futuri
 * migliorare la guida
 * implementare la possibilità di bloccare il secret qualora ci saino state delle anomalie (va rivista la modalità di creazione del secret)
 * prevedere il salvataggio dei dati non in sessione (db o file in drive)
-* nuova API per poter aggiungere ulteriori otp
 * fornire la lista degli OTP sottoforma di URL già pronti
 
