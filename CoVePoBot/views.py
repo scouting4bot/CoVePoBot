@@ -19,7 +19,7 @@ wsgi_app = app.wsgi_app
 vote_session_list = {}
 #-----------------------------------------------------------------------
 @app.route('/')
-def hello():
+def home():
     """Renders a sample page."""
     return "Nessun servizio disponibile!"
 
