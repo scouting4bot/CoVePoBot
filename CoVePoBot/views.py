@@ -106,7 +106,7 @@ def getSecretCSV(vote_id):
         return 'Non sei autorizzato', 403
 
     #create the requested csv
-    return csvFromDictOfAvailable(vote_session_list[vote_id]["secrets"]), 200
+    return csvFromDictByStatus(vote_session_list[vote_id]["secrets"], 'enabled'), 200
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/otps')
@@ -125,7 +125,7 @@ def getOtpCSV(vote_id):
         return 'Non sei autorizzato', 403
 
     #create the requested csv
-    return csvFromDictOfAvailable(vote_session_list[vote_id]["otps"]), 200
+    return csvFromDictByStatus(vote_session_list[vote_id]["otps"], 'available'), 200
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/otp/<otp>')
@@ -203,11 +203,11 @@ def csvFromDict(dict):
     return csv
 
 
-def csvFromDictOfAvailable(dict):
+def csvFromDictByStatus(dict, status):
     """ Extract a Comma Separated List (CSV) string of keys with value "available" in a dictionary """
     csv = ''
     for key in dict:
-        if dict[key] == 'available':
+        if dict[key] == status:
             csv = csv + key + ','
     if csv is not None or csv != '':
         csv = csv[:-1]
