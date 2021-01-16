@@ -9,7 +9,7 @@ Con CoVePoBot è possibile fornire ai votanti un codice autorizzativo garantendo
 * Non necessita di sottoscrizione
 * Produce una lista di password mono-uso (OTP: one time password)
 * Converte gli OTP in "secret" (una password segreta)
-* Converte una sola volta lo stesso OTP: se lo perdi sei fregato. Se qualcuno lo fa prima di te te ne accorgi (da implementare la possibilità di disattivare il "secret").
+* Converte una sola volta lo stesso OTP: se lo perdi sei fregato. Se qualcuno converte l'otp fraudolentemente, la CoVePo può disattivare il relativo secret con l'otp.
 * Permette alla CoVePo di ottenere
   * la lista di OTP ancora non convertiti
   * la lista di "secret" attivati dall'utente.
@@ -82,7 +82,5 @@ Piattaforma
 Sviluppi futuri
 --------
 * migliorare la guida
-* implementare la possibilità di bloccare il secret qualora ci saino state delle anomalie (va rivista la modalità di creazione del secret)
 * prevedere il salvataggio dei dati non in sessione (db o file in drive)
 * fornire la lista degli OTP sottoforma di URL già pronti
-
