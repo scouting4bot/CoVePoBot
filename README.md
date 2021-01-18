@@ -97,7 +97,9 @@ Sviluppi futuri
 --------
 * migliorare la guida
 * prevedere il salvataggio dei dati non in sessione (db o file in drive)
-* fornire la lista degli OTP sottoforma di URL già pronti anche nella lista complessiva
+* fornire la lista degli OTP sottoforma di URL già pronti
+	* anche nella lista complessiva
+	* da browser la lista non è ben leggibile
 * fornire una interfaccia utente più intuitiva
 * migliorare la sicurezza
 	* non gestire la password in chiaro
