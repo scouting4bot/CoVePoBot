@@ -11,6 +11,7 @@ from CoVePoBot import app, logger, app_config#, telegram_config
 
 app_full_name = app_config["app_full_name"]
 app_short_name = app_config['app_short_name']
+domain = "https://my.domain.it"
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
@@ -29,15 +30,24 @@ def home():
 def setupCreateVoteSession():
     """ Creates a new vote session. """
     vote_id = request.args.get('id', '')
-    otp_num = request.args.get('num', '')
+
     try:
+        # Validate number of otps to be created
+        otp_num = request.args.get('otp_num', '')
         if otp_num is None or otp_num == '':
             otp_num = '0'
         otp_num = int(otp_num)
+
+        # Validate flag about otps print
+        get_otp_as_url = request.args.get('otp_as_url', '')
+        if get_otp_as_url is None or get_otp_as_url == '':
+            get_otp_as_url = 'false'
+        get_otp_as_url = (get_otp_as_url.lower() == 'true')
+
     except ValueError:
         return "NUM non è un numero valido", 400
 
-    return createVoteSession(vote_id, otp_num)
+    return createVoteSession(vote_id, otp_num, get_otp_as_url)
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/additionalotp')
@@ -49,14 +59,24 @@ def setupAddOtps(vote_id):
     if psw is None or psw == '' or psw != vote_session_list[vote_id]["psw"]:
         return 'Non sei autorizzato', 403
     
-    #create additional otps
-    otp_num = request.args.get('num', '')
     try:
+        # Validate number of otps to be created
+        otp_num = request.args.get('otp_num', '')
+        if otp_num is None or otp_num == '':
+            otp_num = '0'
         otp_num = int(otp_num)
+
+        # Validate flag about otps print
+        get_otp_as_url = request.args.get('otp_as_url', '')
+        if get_otp_as_url is None or get_otp_as_url == '':
+            get_otp_as_url = 'false'
+        get_otp_as_url = (get_otp_as_url.lower() == 'true')
+
     except ValueError:
         return "NUM non è un numero valido", 400
-
-    return addOtps(vote_id, otp_num)
+    
+    #create additional otps
+    return addOtps(vote_id, otp_num, get_otp_as_url)
 
 #-----------------------------------------------------------------------
 @app.route('/CoVePoBot/<vote_id>/secret/<otp>')
@@ -169,10 +189,12 @@ def convertOtp(vote_id, otp):
         print(vote_session_list)
         return "Il tuo codice è " + secret + " e ti servirà per votare alla "+vote_id+".\n Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
 
+
 def getSecret(vote_id, otp, digits):
     return getHash(app_short_name+otp+vote_id+otp, digits)
 
-def createVoteSession(vote_id, otp_num):
+
+def createVoteSession(vote_id, otp_num, get_otp_as_url):
     """ Adds a vote session to the vote_session_list """
 
     #check if the key already exists
@@ -186,11 +208,23 @@ def createVoteSession(vote_id, otp_num):
             #update vote_session_list
             vote_session_list[vote_id] = result
 
-            #extract the list of new otps to  return in the response
-            otps_csv = csvFromDict(vote_session_list[vote_id]["otps"])
-            return "Aggiunta la nuova sessione "+vote_id+". Usa come password per la gestione: "+psw+"\nGli otp disponibili sono: "+otps_csv, 200
+            #build response
+            response = "Aggiunta la nuova sessione "+vote_id+". "
+            response += "Usa come password per la gestione: " + psw
+            response += "\nGli otp disponibili sono:\n" + printOtp(vote_session_list[vote_id]["otps"], vote_id, get_otp_as_url)
+            
+            return response, 200
         else:
             return result, 500
+
+
+def printOtp(dict, vote_id, get_otp_as_url):
+    """ Extract the list of new otps to  return in the response """
+    if get_otp_as_url:
+        url_base = domain + "/CoVePoBot/" + vote_id + "/otp/"
+        return listFromDictWithPrefix(dict, url_base)
+    else:
+        return csvFromDict(dict)
 
 
 def csvFromDict(dict):
@@ -200,6 +234,16 @@ def csvFromDict(dict):
         csv = csv + key + ','
     if csv is not None or csv != '':
         csv = csv[:-1]
+    return csv
+
+
+def listFromDictWithPrefix(dict, prefix):
+    """ Extract a Comma Separated List (CSV) string of keys in a dictionary and adds to each one a prefix. """
+    csv = ''
+    for key in dict:
+        csv = csv + prefix + key + '\n'
+    if csv is not None or csv != '':
+        csv = csv[:-2]
     return csv
 
 
@@ -267,6 +311,7 @@ def getUid(existing_uids, digits_num):
             continue
         return uid
 
+
 def calcMax(digits_num):
     """ """
     max = ''
@@ -276,7 +321,8 @@ def calcMax(digits_num):
         i += 1
     return int(max)
 
-def addOtps(vote_id, otp_num):
+
+def addOtps(vote_id, otp_num, get_otp_as_url):
     """ Adds more otps to the voting session. """
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
         return "ID non valido", 400
@@ -285,6 +331,8 @@ def addOtps(vote_id, otp_num):
     vote_session_list[vote_id]["otps"].update(otps)
     print(vote_session_list)
 
+    #build response
+    response = "La sessione "+vote_id+" è stata aggiornata. "
     #extract the list of new otps to  return in the response
-    otps_csv = csvFromDict(otps)
-    return "La sessione "+vote_id+" è stata aggiornata.\nI nuovi otp disponibili sono: "+otps_csv, 200
+    response += "\nI nuovi otp disponibili sono: \n" + printOtp(otps, vote_id, get_otp_as_url)
+    return response, 200

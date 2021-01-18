@@ -29,10 +29,17 @@ Amministrazione
 ### Creazione di una nuova sessione di voto ###
 (es: un'assemblea)
 * La CoVePo può attivare una nuova sessione di voto invocando l'url
-  > http://DOMINIO/CoVePoBot/session?id=XXX&num=YYY
+  > http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY
 * esempio di risposta:
   > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
   > Gli otp disponibili sono: 123456,234567,345678,456789,567890
+* Aggiungendo il parametro 'otp_as_url' è possibile ottenere la lista degli otp in forma di url già composto
+  > http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY&otp_as_url=true
+* esempio di risposta:
+  > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
+  > Gli otp disponibili sono:
+  > https://DOMINIO/CoVePoBot/XXX/otp/123456
+  > https://DOMINIO/CoVePoBot/XXX/otp/234567
 
 ### Recupero della lista di "secret" attivati ###
 * La CoVePo può recuperare la lista dei secret attivati dagli utenti.
@@ -50,10 +57,17 @@ Amministrazione
 
 ### Aggiunta di ulteriori OTP alla sessione di voto ###
 * La CoVePo può aggiungere nuovi OTP alla sessione di voto.
-  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&num=YYY
+  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY
 * esempio di risposta:
   > La sessione XXX è stata aggiornata.
   > I nuovi otp disponibili sono: 098765,987654,876543
+* Aggiungendo il parametro 'otp_as_url' è possibile ottenere la lista degli otp in forma di url già composto
+  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY&otp_as_url=true
+* esempio di risposta:
+  > La sessione XXX è stata aggiornata.
+  > I nuovi otp disponibili sono:
+  > https://DOMINIO/CoVePoBot/XXX/otp/123456
+  > https://DOMINIO/CoVePoBot/XXX/otp/234567
 
 ### Rimozione di un secret ###
 * La CoVePo può annullare un secret a partire dal relativo OTP.
@@ -83,4 +97,7 @@ Sviluppi futuri
 --------
 * migliorare la guida
 * prevedere il salvataggio dei dati non in sessione (db o file in drive)
-* fornire la lista degli OTP sottoforma di URL già pronti
+* fornire la lista degli OTP sottoforma di URL già pronti anche nella lista complessiva
+* fornire una interfaccia utente più intuitiva
+* migliorare la sicurezza
+	* non gestire la password in chiaro
