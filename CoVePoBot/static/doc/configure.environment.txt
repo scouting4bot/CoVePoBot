@@ -1,0 +1,9 @@
+Ref: https://help.pythonanywhere.com/pages/Virtualenvs/
+Commands:
+mkvirtualenv myvirtualenv --python=/usr/bin/python3.7
+workon myvirtualenv
+pip install flask
+pip install requests
+pip install flask-mysql
+
+/home/effedici/.virtualenvs/myvirtualenv

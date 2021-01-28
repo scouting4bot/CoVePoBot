@@ -1,0 +1,20 @@
+﻿<!-- Declase the template that you will inherit from -->
+{% extends "dashboard_layout.html" %}
+
+<!-- The block "content" will override the one of the inherited template ("layout.html") -->
+{% block content %}
+
+<div class="body-content">
+    <!-- The block "content" will be overridden on each new page that inherit this one -->
+    <!-- For links use the total path "/app/renderwith/template" or a relative path "../renderwith/template" -->
+    <br />
+    {{ content }}
+    <p style="color:red">{{ alert }}</p>
+    <hr />
+    <ul>
+        {% for element2show in list2show %}
+        <li>{{element2show}}{% if showurl %} - {{url_base}}{{element2show}}{% endif %}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

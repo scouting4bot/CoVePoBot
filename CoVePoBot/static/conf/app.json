@@ -1,10 +1,11 @@
 {
-	"app_full_name": "CoVePoBot",
-	"app_short_name": "cvpb",
-	"CONTACTUS_GOOGLE_SHEET_WORKBOOK": "bot_feedback",
-	"DATABASE_TYPE": "postgres",
-	"DATABASE_URL": "https://my:url:dns.com:12345/db",
-	"METERING_EXECUTE": "True",
-	"METERING_GOOGLE_SHEET_WORKBOOK": "bot_metering",
-	"METERING_TYPE": "google_sheet"
+  "app_full_name": "CoVePoBot",
+  "app_short_name": "cvpb",
+  "DATABASE_TYPE": "mysql",
+  "domain": "www.mysite.com",
+  "MYSQL_DATABASE_DB": "mydb",
+  "MYSQL_DATABASE_HOST": "my.de.host.it",
+  "MYSQL_DATABASE_PASSWORD": "mypsw",
+  "MYSQL_DATABASE_PORT": 3306,
+  "MYSQL_DATABASE_USER": "myuser"
 }

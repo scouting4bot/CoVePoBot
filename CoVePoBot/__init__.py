@@ -14,30 +14,17 @@ app.config.from_json('static/conf/settings.json')
 
 # Get configuration from JSON
 app_config = fromJsonToDict('CoVePoBot/static/conf/app.json')
-#telegram_config = fromJsonToDict('CoVePoBot/static/conf/telegram.json')
-#data4bot = fromJsonToDict('CoVePoBot/static/conf/data4bot.json')
-#imgs_list = getListOfFiles('CoVePoBot/static/img/','png')
-#google_sheet_credentials = fromJsonToDict('CoVePoBot/static/conf/aids2botmastership.json')
 
 logger = app.logger
 
 # ----------------------------------------------------------
-def config_environment_variables(app_config):#, telegram_config, data4bot, google_sheet_credentials):
+def config_environment_variables(app_config):
     
     if os.environ.get('has_config_vars') and os.environ.get('has_config_vars') != "":
         logger.info("Override configuration with Environment Variables")
         # app_config
         for key in app_config.keys():
             set_environment_variable(app_config, key)
-        # telegram_config
-#        for key in telegram_config.keys():
-#            set_environment_variable(telegram_config, key)
-        # data4bot
-#        for key in data4bot.keys():
-#            set_environment_variable(data4bot, key)
-        # data4bot
-#        for key in google_sheet_credentials.keys():
-#            set_google_environment_variable(google_sheet_credentials, key)
 
     else:
         logger.info("No configuration was found in the Environment")
@@ -47,17 +34,16 @@ def set_environment_variable(config_dict, variable_key):
     if variable_value is not None and variable_value != "":
         logger.info("- Environment has {0}".format(variable_key))
         config_dict[variable_key] = variable_value
-
-def set_google_environment_variable(config_dict, variable_key):
-    variable_value = os.environ.get("GOOGLE_"+variable_key)
-    if variable_value is not None and variable_value != "":
-        logger.info("- Environment has {0}".format(variable_key))
-        config_dict[variable_key] = variable_value
-    return google_sheet_credentials
 # ----------------------------------------------------------
 
 # Override configuration with environment variables
-config_environment_variables(app_config)#, telegram_config, data4bot, google_sheet_credentials)
+config_environment_variables(app_config)
+
+app.config['MYSQL_DATABASE_USER'] = app_config['MYSQL_DATABASE_USER']
+app.config['MYSQL_DATABASE_PASSWORD'] = app_config['MYSQL_DATABASE_PASSWORD']
+app.config['MYSQL_DATABASE_DB'] = app_config['MYSQL_DATABASE_DB']
+app.config['MYSQL_DATABASE_HOST'] = app_config['MYSQL_DATABASE_HOST']
+app.config['MYSQL_DATABASE_PORT'] = app_config['MYSQL_DATABASE_PORT']
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app

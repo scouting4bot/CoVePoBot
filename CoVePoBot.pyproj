@@ -27,9 +27,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CoVePoBot\application\datasource\mysql\bakup.py" />
+    <Compile Include="CoVePoBot\application\datasource\mysql\connection.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CoVePoBot\application\utils.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CoVePoBot\static\doc\configure.environment.txt">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CoVePoBot\application\datasource\initcache.py" />
     <Compile Include="CoVePoBot\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,18 +45,27 @@
     <Compile Include="CoVePoBot\views.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CoVePoBot\static\conf\data.json" />
     <Content Include="CoVePoBot\static\conf\settings.json" />
     <Content Include="CoVePoBot\static\conf\logger.json" />
     <Content Include="CoVePoBot\static\conf\app.json" />
+    <Content Include="CoVePoBot\static\doc\example.cache.structure.json" />
+    <Content Include="CoVePoBot\static\sql\queries.sql" />
+    <Content Include="CoVePoBot\templates\dashboard_layout.html" />
+    <Content Include="CoVePoBot\templates\layout.html" />
+    <Content Include="CoVePoBot\templates\dashboard.html" />
     <Content Include="README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CoVePoBot\" />
     <Folder Include="CoVePoBot\application\" />
+    <Folder Include="CoVePoBot\application\datasource\" />
+    <Folder Include="CoVePoBot\application\datasource\mysql\" />
+    <Folder Include="CoVePoBot\static\doc\" />
+    <Folder Include="CoVePoBot\templates\" />
     <Folder Include="CoVePoBot\static\" />
     <Folder Include="CoVePoBot\static\conf\" />
+    <Folder Include="CoVePoBot\static\sql\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="cvpb\">

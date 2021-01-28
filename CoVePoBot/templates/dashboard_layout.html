@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/site.css" />
+</head>
+
+<body>
+
+    <div class="navbar">
+        |
+        <a href="{{ url_for('mngDashboard',**info)}}">Home</a> |
+        <a href="{{ url_for('mngDashboard_additionalotp', otp_num = 30, **info) }}">add 30 OTPs</a> |
+        <a href="{{ url_for('mngDashboard_list', element = 'otps', **info) }}">list OTPs</a> |
+        <a href="{{ url_for('mngDashboard_list', element = 'secrets', **info)}}">list Secrets</a> |
+        <a href="{{ url_for('mngDashboard_disableSecret', **info)}}">remove Secret</a> |
+    </div>
+    <hr />
+
+    <!-- The block "content" will be overridden on each new page that inherit this one -->
+    {% block content %}
+    {% endblock %}
+    <hr />
+    <footer>
+        <p>&copy; 2020</p>
+    </footer>
+</body>
+</html>

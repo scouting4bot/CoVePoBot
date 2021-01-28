@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /cvpb
+/CoVePoBot/application/datasource/mysql/bakup.py

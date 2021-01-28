@@ -96,10 +96,9 @@ Piattaforma
 Sviluppi futuri
 --------
 * migliorare la guida
-* prevedere il salvataggio dei dati non in sessione (db o file in drive)
-* fornire la lista degli OTP sottoforma di URL già pronti
-	* anche nella lista complessiva
-	* da browser la lista non è ben leggibile
-* fornire una interfaccia utente più intuitiva
+* aggiungere alla guida la parte della dashboard e liste csv
 * migliorare la sicurezza
 	* non gestire la password in chiaro
+* performance
+	* non ripetizione OTP
+	* non ripetizione Secret

@@ -1,0 +1,29 @@
+{
+	"vote_session_list": {
+		"vote_id_A": {
+			"otps": {
+				"111111": "available",
+				"222222": "available",
+				"333333": "available"
+			},
+			"secrets": {
+			},
+			"psw": "qwerty123",
+			"create_date": "2021-01-23 18:45:09.900200"
+		},
+		"vote_id_B": {
+			"otps": {
+				"111111": "expired",
+				"222222": "expired",
+				"333333": "expired",
+			},
+			"secrets": {
+				"9999999999": "enabled",
+				"8888888888": "enabled",
+				"7777777777": "expired"
+			},
+			"psw": "asd555",
+			"create_date": "2021-01-25 19:35:01.900200"
+		}
+	}
+}
