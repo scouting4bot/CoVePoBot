@@ -398,7 +398,7 @@ def convertOtp(vote_id, otp):
             return "Errore con DB", "", "", 500
 
         print(vote_session_list)
-        return "Il tuo codice per votare alla sessione di voto '"+vote_id+"' è ", secret, "Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
+        return "Operazione eseguita con successo. Per votare alla sessione di voto '"+vote_id+"' il tuo codice sarà: ", secret, "Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
 
 
 def getSecret(vote_id, otp, digits):
