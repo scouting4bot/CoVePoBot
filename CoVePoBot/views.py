@@ -7,6 +7,7 @@ import time
 import random
 from datetime import datetime
 from flask import Flask, request, jsonify, render_template
+from flaskext.mysql import MySQL
 from CoVePoBot import app, logger, app_config
 from CoVePoBot.application.datasource.mysql.connection import ExecuteQueryInsert, ExecuteQueryUpdate, ExecuteQuerySelect
 from CoVePoBot.application.datasource.initcache import init_vote_session_list
