@@ -86,6 +86,38 @@ Come si attiva l’OTP
   > Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo
 * Si suggerisce che la CoVePo fornisca direttamente il link completo poiché non tutti gli utenti sono in grado di costruire un URL.
 
+Installazione
+--------
+### N.B.: non è stato ancora possibile testare integralmente il codice in un ambiente ad-hoc. Per questo motivo si potrebbe riscontrare piccoli problemi di connettività con il DB mySQL. ###
+### N.B.: Per l'installazione su Heroku, è previsto un branch ad-hoc (master_heroku) da utilizzare. ###
+* Codice: al momento non è disponibile un pacchetto di rilasico. Copiare il codice di questo repository.
+* Configurazioni: è possibile configurare l'applicativo con gli opportuni JSON indicati di seguito. Qualora si volessero usare variabili d'ambiente per sovrascrivere le configurazioni, si raccomanda di aggiungere la variabile d'ambiente "has_config_vars" con valore "true" per attivarne l'uso.
+	* Database: nel caso in cui si usi un DB mySQL, connettersi al Database ed eseguire i comandi presenti nella cartella '/CoVePoBot/static/sql'.
+
+	* Installare le dipendenze presenti nel file "/requirements.txt" con pip oppure creando un "environment" python.
+		> es.:
+
+		> mkvirtualenv myvirtualenv --python=/usr/bin/python3.7
+
+		> workon myvirtualenv
+
+		> pip install flask
+
+		> pip install requests
+
+		> pip install flask-mysql
+
+	* Modificare le informazioni presenti nel JSON di configurazione 'CoVePoBot/static/conf/app.json'. In particolare è necessario compilare i seguenti campi:
+		* "domain": con il dominio su cui sarà raggiungibile l'applicativo. Ad esempio se si scrive "domain": "www.mysite.com", vorrà dire che l'applicativo risponderà a www.mysite.com/CoVePoBot/session
+		* "use_db": con un valore "True" o "False" a seconda che si usi rispettivamente un Database o non se ne faccia uso.
+
+		* Tutti i campi che iniziano con "MYSQL_DATABASE_" saranno necessari solo se si userà un Database (mySQL)
+			* "MYSQL_DATABASE_HOST" è l'host del DB.
+			* "MYSQL_DATABASE_PORT": è la porta a cui connettersi per l'accesso al DB.
+			* "MYSQL_DATABASE_USER": è l'utente per l'accesso al DB.
+			* "MYSQL_DATABASE_PASSWORD": è la password per l'accesso dell'utente al DB.
+
+
 Piattaforma
 --------
 * L'applicativo è scritto in Python con Framework Flask.
