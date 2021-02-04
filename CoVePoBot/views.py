@@ -24,7 +24,13 @@ mysql.init_app(app)
 
 
 #-----------------------------------------------------------------------
-vote_session_list = init_vote_session_list(mysql)
+# Setup the cache
+vote_session_list = {}
+manageDB = app_config['use_db']
+if manageDB is not None and str(manageDB) == "True":
+    vote_session_list = init_vote_session_list(mysql)
+else:
+    manageDB = 'False'
 print('==========> vote_session_list = ' + str(vote_session_list))
 
 
@@ -276,9 +282,10 @@ def disableSecret(vote_id, otp):
     vote_session_list[vote_id]['secrets'][secret] = 'expired'
 
     # Update in the DB
-    result = ExecuteQueryUpdate('secret', {'vote_id':vote_id,'secret':secret,'nwVal':{'status':'expired'}}, mysql)
-    if result != 1:
-        return "Errore con DB", 500
+    if manageDB and str(manageDB) == "True":
+        result = ExecuteQueryUpdate('secret', {'vote_id':vote_id,'secret':secret,'nwVal':{'status':'expired'}}, mysql)
+        if result != 1:
+            return "Errore con DB", 500
 
     #create the requested csv
     return "Secret disabilitato", 200
@@ -307,13 +314,15 @@ def getSecretCSV(vote_id):
         return csvFromDictByStatus(vote_session_list[vote_id]["secrets"], 'enabled'), 200
     else:
         #create the requested csv from DB
-        result_list = ExecuteQuerySelect('secret', {'columns2select':'secret', 'vote_id':vote_id, 'status':'enabled'}, mysql)
-        csv = ''
-        for row in result_list:
-            csv = csv + str(row[0]) + ','
-        if csv is not None or csv != '':
-            csv = csv[:-1]
-        return csv, 200
+        if manageDB and str(manageDB) == "True":
+            result_list = ExecuteQuerySelect('secret', {'columns2select':'secret', 'vote_id':vote_id, 'status':'enabled'}, mysql)
+            csv = ''
+            for row in result_list:
+                csv = csv + str(row[0]) + ','
+            if csv is not None or csv != '':
+                csv = csv[:-1]
+            return csv, 200
+        return '', 200
 
 
 #-----------------------------------------------------------------------
@@ -386,17 +395,19 @@ def convertOtp(vote_id, otp):
         vote_session_list[vote_id]['otps'][otp] = 'expired'
 
         # Update in the DB
-        result = ExecuteQueryUpdate('otp', {'vote_id':vote_id,'otp':otp,'nwVal':{'status':'expired'}}, mysql)
-        if result != 1:
-            return "Errore con DB", "", "", 500
+        if manageDB and str(manageDB) == "True":
+            result = ExecuteQueryUpdate('otp', {'vote_id':vote_id,'otp':otp,'nwVal':{'status':'expired'}}, mysql)
+            if result != 1:
+                return "Errore con DB", "", "", 500
 
         # Enable secret
         vote_session_list[vote_id]['secrets'][secret] = 'enabled'
 
         # Store in the DB
-        result = ExecuteQueryInsert('secret', {'vote_id':vote_id,'secret':secret,'status':'enabled','create_date':now()}, mysql)
-        if result != 1:
-            return "Errore con DB", "", "", 500
+        if manageDB and str(manageDB) == "True":
+            result = ExecuteQueryInsert('secret', {'vote_id':vote_id,'secret':secret,'status':'enabled','create_date':now()}, mysql)
+            if result != 1:
+                return "Errore con DB", "", "", 500
 
         print(vote_session_list)
         return "Operazione eseguita con successo. Per votare alla sessione di voto '"+vote_id+"' il tuo codice sarà: ", secret, "Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
@@ -488,9 +499,10 @@ def getNewVoteSession(vote_id, otp_num):
     create_date = now()
 
     # Store in the DB
-    result = ExecuteQueryInsert('vote_session', {'vote_id':vote_id,'psw':psw,'create_date':create_date}, mysql)
-    if result != 1:
-        return False, '', ''
+    if manageDB and str(manageDB) == "True":
+        result = ExecuteQueryInsert('vote_session', {'vote_id':vote_id,'psw':psw,'create_date':create_date}, mysql)
+        if result != 1:
+            return False, '', ''
 
     if otp_num is None or otp_num == '':
         return True, {"id":vote_id, "psw":psw, "otps":{}, "secrets":{}, "create_date":create_date}, psw
@@ -508,9 +520,10 @@ def createOtps(vote_id, otp_num):
         otps[uid] = "available"
 
         # Store in the DB
-        result = ExecuteQueryInsert('otp', {'vote_id':vote_id,'otp':uid,'create_date':now(),'status':'available'}, mysql)
-        if result != 1:
-            return {}
+        if manageDB and str(manageDB) == "True":
+            result = ExecuteQueryInsert('otp', {'vote_id':vote_id,'otp':uid,'create_date':now(),'status':'available'}, mysql)
+            if result != 1:
+                return {}
         i += 1
     return otps
 
