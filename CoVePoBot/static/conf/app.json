@@ -3,9 +3,9 @@
   "app_short_name": "cvpb",
   "DATABASE_TYPE": "mysql",
   "domain": "www.mysite.com",
-  "MYSQL_DATABASE_DB": "mydb",
-  "MYSQL_DATABASE_HOST": "my.de.host.it",
-  "MYSQL_DATABASE_PASSWORD": "mypsw",
+  "MYSQL_DATABASE_DB": "myDBname",
+  "MYSQL_DATABASE_HOST": "my.db.host.it",
+  "MYSQL_DATABASE_PASSWORD": "myDBpsw",
   "MYSQL_DATABASE_PORT": 3306,
-  "MYSQL_DATABASE_USER": "myuser"
+  "MYSQL_DATABASE_USER": "myDBuser"
 }
