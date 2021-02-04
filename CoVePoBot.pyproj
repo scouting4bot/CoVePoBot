@@ -27,7 +27,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CoVePoBot\application\datasource\mysql\bakup.py" />
     <Compile Include="CoVePoBot\application\datasource\mysql\connection.py">
       <SubType>Code</SubType>
     </Compile>
