@@ -7,5 +7,6 @@
   "MYSQL_DATABASE_HOST": "my.db.host.it",
   "MYSQL_DATABASE_PASSWORD": "myDBpsw",
   "MYSQL_DATABASE_PORT": 3306,
-  "MYSQL_DATABASE_USER": "myDBuser"
+  "MYSQL_DATABASE_USER": "myDBuser",
+  "use_db": "True"
 }
