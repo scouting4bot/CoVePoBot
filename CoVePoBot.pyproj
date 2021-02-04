@@ -53,6 +53,8 @@
     <Content Include="CoVePoBot\templates\dashboard_layout.html" />
     <Content Include="CoVePoBot\templates\layout.html" />
     <Content Include="CoVePoBot\templates\dashboard.html" />
+    <Content Include="Procfile" />
+    <Content Include="Procfile.windows" />
     <Content Include="README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
