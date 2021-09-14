@@ -1,7 +1,8 @@
 
+
 # CoVePoBot v. 0.1
 
-Overview
+Panoramica
 --------
 CoVePoBot è un supporto pensato per le funzioni di Verifica Poteri (CoVePo) in assemblee digitalizzate.
 Con CoVePoBot è possibile fornire ai votanti un codice autorizzativo garantendo la segreteza del loro voto e l'impossibilità di risalire all'identità del votante.
@@ -14,15 +15,19 @@ Con CoVePoBot è possibile fornire ai votanti un codice autorizzativo garantendo
   * la lista di OTP ancora non convertiti
   * la lista di "secret" attivati dall'utente.
 
-Esempi
+Acronimi, glossario e convenzioni
 --------
-* Gli url riportati di seguito possono essere testati sostituendo "DOMINIO" con "effedici.pythonanywhere.com"
-* Negli esempi di seguito è stata usata la seguente convenzione:
-  * XXX = alfanumerico, è il nome della sessione (influirà sugli url per la conversione)
-  * YYY = numerico, è il numero di otp da attivare
-  * ZZZ = alfanumerico, è la password di amministrazione fornita da CoVePoBot alla creazione della nuova sessione di voto
-  * OOO = numerico, è l'OTP da convertire in secret
-  * SSS = alfanumerico, è il secret ottenuto dalla conversione dell'OTP
+* **CoVePo**: *Commissione Verifica Poteri*, è l'organo che si occupa dell'autenticazione ed autorizzazione degli utenti votanti.
+* **OTP**: *One Time Password*, *numerico*, è una sequenza numerica usa e getta (non è possibile usarla più volte). Viene fornita dalla CoVePo all'utente per convertirla nella password segreta (Secret) da usare in fase di votazione. Questo garantisce la segretezza del voto poiché la CoVePo non sarà in grado di associarlo al votante.
+* **Secret**: è la password che autorizzerà l'utente a votare.
+* **URL**: *Uniform Resource Locator* è una sequenza di caratteri che identifica univocamente l'indirizzo di una risorsa (documento, immagine, servizio, API) su una rete ([Wikipedia](https://it.wikipedia.org/wiki/Uniform_Resource_Locator))
+* **DOMINIO**: negli esempi che seguono, gli url riportati possono essere testati sostituendo "*DOMINIO*" con "*effedici.pythonanywhere.com*"
+* Negli esempi che seguono è stata usata la seguente convenzione:
+  * **XXX** = *alfanumerico*, è il nome della sessione (influirà sugli url per la conversione)
+  * **YYY** = *numerico*, è il numero di otp da attivare
+  * **ZZZ** = *alfanumerico*, è la password di amministrazione fornita da CoVePoBot alla creazione della nuova sessione di voto
+  * **OOO** = *numerico*, è l'OTP da convertire in secret
+  * **SSS** = *alfanumerico*, è il secret ottenuto dalla conversione dell'OTP
 
 Amministrazione
 --------
@@ -150,3 +155,5 @@ Sviluppi futuri
 	* [ ] evitare 'O' maiuscola, per evitare che si confonda con uno '0'
 * restful
 	* [ ] avendo implementato la dashboard, si potrebbero rendere restful le API esposte
+* voto
+	* [ ] template scrutinio
