@@ -1,5 +1,5 @@
+
 # CoVePoBot v. 0.1
-================
 
 Overview
 --------
@@ -29,12 +29,16 @@ Amministrazione
 ### Creazione di una nuova sessione di voto ###
 (es: un'assemblea)
 * La CoVePo può attivare una nuova sessione di voto invocando l'url
-  > http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY
+```url
+ http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY
+```
 * esempio di risposta:
   > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
   > Gli otp disponibili sono: 123456,234567,345678,456789,567890
 * Aggiungendo il parametro 'otp_as_url' è possibile ottenere la lista degli otp in forma di url già composto
-  > http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY&otp_as_url=true
+```url
+http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY&otp_as_url=true
+```
 * esempio di risposta:
   > Aggiunta la nuova sessione XXX. Usa come password per la gestione: ZZZ
   > Gli otp disponibili sono:
@@ -43,7 +47,9 @@ Amministrazione
 
 ### Recupero della lista di "secret" attivati ###
 * La CoVePo può recuperare la lista dei secret attivati dagli utenti.
-  > http://DOMINIO/CoVePoBot/XXX/secrets?password=ZZZ
+```url
+http://DOMINIO/CoVePoBot/XXX/secrets?password=ZZZ
+```
 * esempio di risposta:
   >as5d64fr97,b69b91a53a
 * Un secret si attiva convertendo l'OTP all'opportuno URL
@@ -51,18 +57,24 @@ Amministrazione
 
 ### Recupero della lista di OTP non convertiti ancora dagli utenti ###
 * La CoVePo può recuperare la lista degli OTP non ancora attivati dagli utenti.
-  > http://DOMINIO/CoVePoBot/XXX/otps/?password=ZZZ
+```url
+http://DOMINIO/CoVePoBot/XXX/otps/?password=ZZZ
+```
 * esempio di risposta:
   > 234567,345678,456789,567890
 
 ### Aggiunta di ulteriori OTP alla sessione di voto ###
 * La CoVePo può aggiungere nuovi OTP alla sessione di voto.
-  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY
+```url
+http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY
+```
 * esempio di risposta:
   > La sessione XXX è stata aggiornata.
   > I nuovi otp disponibili sono: 098765,987654,876543
-* Aggiungendo il parametro 'otp_as_url' è possibile ottenere la lista degli otp in forma di url già composto
-  > http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY&otp_as_url=true
+* Aggiungendo il parametro '*otp_as_url*' è possibile ottenere la lista degli otp in forma di url già composto
+```url
+http://DOMINIO/CoVePoBot/XXX/additionalotp/?password=ZZZ&otp_num=YYY&otp_as_url=true
+```
 * esempio di risposta:
   > La sessione XXX è stata aggiornata.
   > I nuovi otp disponibili sono:
@@ -71,19 +83,22 @@ Amministrazione
 
 ### Rimozione di un secret ###
 * La CoVePo può annullare un secret a partire dal relativo OTP.
-  > http://DOMINIO/CoVePoBot/XXX/secret/OOO/?password=ZZZ
+```url
+http://DOMINIO/CoVePoBot/XXX/secret/OOO/?password=ZZZ
+```
 * esempio di risposta:
   > Secret disabilitato
-
-  /CoVePoBot/<vote_id>/secret/<secret>
 
 Come si attiva l’OTP
 --------
 * L'utente dovrà chiamare un URL da browser come il seguente (sostituire OOO con l'OTP)
-  > http://DOMINIO/CoVePoBot/XXX/otp/OOO
+```url
+http://DOMINIO/CoVePoBot/XXX/otp/OOO
+```
 * esempio di risposta:
   > Il tuo codice è SSS e ti servirà per votare alla XXX.
   > Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo
+
 * Si suggerisce che la CoVePo fornisca direttamente il link completo poiché non tutti gli utenti sono in grado di costruire un URL.
 
 Installazione
@@ -96,15 +111,10 @@ Installazione
 
 	* Installare le dipendenze presenti nel file "/requirements.txt" con pip oppure creando un "environment" python.
 		> es.:
-
 		> mkvirtualenv myvirtualenv --python=/usr/bin/python3.7
-
 		> workon myvirtualenv
-
 		> pip install flask
-
 		> pip install requests
-
 		> pip install flask-mysql
 
 	* Modificare le informazioni presenti nel JSON di configurazione 'CoVePoBot/static/conf/app.json'. In particolare è necessario compilare i seguenti campi:
@@ -122,7 +132,7 @@ Piattaforma
 --------
 * L'applicativo è scritto in Python con Framework Flask.
 * Al momento non sono previste versioni specifiche per ogni piattaforma.
-* Una istanza d'esempio è disponibile e funzionante al dominio
+* Una istanza d'esempio (non manutenuta) è disponibile al dominio
   > effedici.pythonanywhere.com
 
 Sviluppi futuri
