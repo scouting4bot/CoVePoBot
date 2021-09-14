@@ -513,11 +513,13 @@ def getNewVoteSession(vote_id, otp_num):
 
 def createOtps(vote_id, otp_num):
     """ Creates a dictionary with "otp_num" quantity of new otps. """
-    otps = {}
+    otps = vote_session_list[vote_id]["otps"]
+    newOtps = {}
     i = 0
     while i < otp_num:
         uid = getUid(otps, 6)
         otps[uid] = "available"
+        newOtps[uid] = "available"
 
         # Store in the DB
         if manageDB and str(manageDB) == "True":
@@ -525,7 +527,7 @@ def createOtps(vote_id, otp_num):
             if result != 1:
                 return {}
         i += 1
-    return otps
+    return newOtps
 
 
 def getHash(input, digits):

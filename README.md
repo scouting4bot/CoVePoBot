@@ -138,15 +138,15 @@ Piattaforma
 Sviluppi futuri
 --------
 * migliorare la guida
-	* implementare una piccola wiki
-	* aggiungere alla guida la parte della dashboard e liste csv
+	* [ ] implementare una piccola wiki
+	* [ ] aggiungere alla guida la parte della dashboard e liste csv
 * migliorare la sicurezza
-	* non gestire la password in chiaro
+	* [ ] non gestire la password in chiaro
 * performance
-	* non ripetizione OTP
-	* non ripetizione Secret
+	* [x] non ripetizione OTP
+	* [ ] non ripetizione Secret
 * user-friendly:
-	* evitare 'l' minuscola, per evitare che si confonda con un '1'
-	* evitare 'O' maiuscola, per evitare che si confonda con uno '0'
+	* [ ] evitare 'l' minuscola, per evitare che si confonda con un '1'
+	* [ ] evitare 'O' maiuscola, per evitare che si confonda con uno '0'
 * restful
-	* avendo implementato la dashboard, si potrebbero rendere restful le API esposte
+	* [ ] avendo implementato la dashboard, si potrebbero rendere restful le API esposte
