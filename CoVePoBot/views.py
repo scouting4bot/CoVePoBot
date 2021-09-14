@@ -217,6 +217,7 @@ def setupCreateVoteSession():
         return "NUM non è un numero valido", 400
 
     msg, http, psw = createVoteSession(vote_id, otp_num, get_otp_as_url)
+
     if (link_dashboard):
         return str(msg)+'<br /><a href="/CoVePoBot/dashboard/'+vote_id+'?password='+str(psw)+'">Dashboard</a>', http
     else:

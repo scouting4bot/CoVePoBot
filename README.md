@@ -156,17 +156,19 @@ Sviluppi futuri
 	* [x] non ripetizione Secret
 	* [ ] test
 * user-friendly:
+	* [ ] pagina per conversione otp (inserisco OTP ed ottengo il secret senza dover comporre l'url ad-hoc)
 	* [ ] evitare 'l' minuscola, per evitare che si confonda con un '1'
 	* [ ] evitare 'O' maiuscola, per evitare che si confonda con uno '0'
 	* [ ] test
 * restful
 	* [ ] avendo implementato la dashboard, si potrebbero rendere restful le API esposte
+	* [ ] test
 * voto
 	* [ ] template scrutinio
 
 Versione
 --------
-*  v. 0.2
+*  v. 0.2.1
 	* non ripetizione OTP e Secret
 *  v. 0.1
 	* versione di partenza
