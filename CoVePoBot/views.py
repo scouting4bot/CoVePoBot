@@ -391,23 +391,30 @@ def convertOtp(vote_id, otp):
     else:
         secret = getSecret(vote_id, otp, 10)
 
-        # Disable otp
-        vote_session_list[vote_id]['otps'][otp] = 'expired'
+        # Check if the secret is duplicated
+        if secret in vote_session_list[vote_id]['secrets'][secret]:
 
-        # Update in the DB
-        if manageDB and str(manageDB) == "True":
-            result = ExecuteQueryUpdate('otp', {'vote_id':vote_id,'otp':otp,'nwVal':{'status':'expired'}}, mysql)
-            if result != 1:
-                return "Errore con DB", "", "", 500
+            # Disable otp
+            vote_session_list[vote_id]['otps'][otp] = 'expired'
 
-        # Enable secret
-        vote_session_list[vote_id]['secrets'][secret] = 'enabled'
+            # Update in the DB
+            if manageDB and str(manageDB) == "True":
+                result = ExecuteQueryUpdate('otp', {'vote_id':vote_id,'otp':otp,'nwVal':{'status':'expired'}}, mysql)
+                if result != 1:
+                    return "Errore con DB", "", "", 500
 
-        # Store in the DB
-        if manageDB and str(manageDB) == "True":
-            result = ExecuteQueryInsert('secret', {'vote_id':vote_id,'secret':secret,'status':'enabled','create_date':now()}, mysql)
-            if result != 1:
-                return "Errore con DB", "", "", 500
+            # Enable secret
+            vote_session_list[vote_id]['secrets'][secret] = 'enabled'
+
+            # Store in the DB
+            if manageDB and str(manageDB) == "True":
+                result = ExecuteQueryInsert('secret', {'vote_id':vote_id,'secret':secret,'status':'enabled','create_date':now()}, mysql)
+                if result != 1:
+                    return "Errore con DB", "", "", 500
+
+        # If the secret is duplicated, return error
+        else:
+            return "Errore secret duplicato. Richiedi un bambio di OTP.", "", "", 500
 
         print(vote_session_list)
         return "Operazione eseguita con successo. Per votare alla sessione di voto '"+vote_id+"' il tuo codice sarà: ", secret, "Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200

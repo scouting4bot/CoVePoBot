@@ -1,6 +1,8 @@
 
 
-# CoVePoBot v. 0.1
+
+
+# CoVePoBot
 
 Panoramica
 --------
@@ -147,13 +149,24 @@ Sviluppi futuri
 	* [ ] aggiungere alla guida la parte della dashboard e liste csv
 * migliorare la sicurezza
 	* [ ] non gestire la password in chiaro
+	* [ ] migliorare conversione OTP in Secret
+	* [ ] test
 * performance
 	* [x] non ripetizione OTP
-	* [ ] non ripetizione Secret
+	* [x] non ripetizione Secret
+	* [ ] test
 * user-friendly:
 	* [ ] evitare 'l' minuscola, per evitare che si confonda con un '1'
 	* [ ] evitare 'O' maiuscola, per evitare che si confonda con uno '0'
+	* [ ] test
 * restful
 	* [ ] avendo implementato la dashboard, si potrebbero rendere restful le API esposte
 * voto
 	* [ ] template scrutinio
+
+Versione
+--------
+*  v. 0.2
+	* non ripetizione OTP e Secret
+*  v. 0.1
+	* versione di partenza
