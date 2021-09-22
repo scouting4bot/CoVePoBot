@@ -1,6 +1,6 @@
 
 # CoVePoBot - Ensemble
-![License](https://img.shields.io/badge/status-work%20in%20progress-red) ![License](https://img.shields.io/badge/version-0.2.2-yellow) ![License](https://img.shields.io/github/languages/top/scouting4bot/CoVePoBot)
+![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen) ![License](https://img.shields.io/badge/version-0.2.2-yellow) ![License](https://img.shields.io/github/languages/top/scouting4bot/CoVePoBot)
 
 Panoramica
 --------
