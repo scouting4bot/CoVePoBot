@@ -1,5 +1,6 @@
 
 # CoVePoBot
+![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen)
 
 Panoramica
 --------
