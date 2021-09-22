@@ -4,7 +4,7 @@
 
 Panoramica
 --------
-**CoVePoBot** è un'applicazione web in python ([flask](https://flask.palletsprojects.com/)) per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee online. **Non è ottimizzato per le assemblee in presenza**. CoVePoBot permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
+**CoVePoBot** è un'applicazione web in python ([flask](https://flask.palletsprojects.com/)) per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee online che richiedano voto digitalizzato con [ScrutinioFast](istruzioni_ScrutinioFast_ita.md). **Non è ottimizzato per le assemblee in presenza**. CoVePoBot permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
 * Funziona via browser (eg. chrome)
 * Non necessita di sottoscrizione
 * Produce una lista di password mono-uso (OTP: one time password)
