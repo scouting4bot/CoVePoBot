@@ -5,7 +5,7 @@
 
 Panoramica
 --------
-**CoVePoPhys** è un insieme di procedure pensate per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee in presenza che richiedano voto digitalizzato con [ScrutinioFast](docs/istruzioni_scrutinio_ita.md). **Non è ottimizzato per le assemblee online**. CoVePoPhys permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
+**CoVePoPhys** è un insieme di procedure pensate per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee in presenza che richiedano voto digitalizzato con [ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md). **Non è ottimizzato per le assemblee online**. CoVePoPhys permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
 * Non necessita di installazione di nuovo software
 * Si basa sulla piattaforma Google, ma può essere esportato su altri servizi analoghi (form+foglio di calcolo)
 * Produce una lista di "secret" (una password segreta)
