@@ -1,4 +1,6 @@
 # ScrutinioFast
+![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen)
+
 Panoramica
 --------
 **ScrutinioFast** è un insieme di procedure pensate per velocizzare lo scrutinio di voti assembleari, permettendo anche l'autenticazione del voto attraverso dei codici autorizzativi (secret).
