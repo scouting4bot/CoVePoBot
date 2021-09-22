@@ -12,7 +12,7 @@ Esso si divide in diverse offerte:
  - **CoVePoPhys**: procedure di Covepo per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in **assemblee in presenza**. Non è ottimizzato per le assemblee online (in questi casi si suggerisce l'uso di [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)).
 	 - [Guida ed approfondimenti](docs/istruzioni_CoVePoPhys_ita.md)
  - **ScrutinioFast**: foglio di calcolo per lo scrutinio automatizzato del voto.
-	 - [Guida ed approfondimenti](docs/istruzioni_scrutinio_ita.md)
+	 - [Guida ed approfondimenti](docs/istruzioni_ScrutinioFast_ita.md)
 
 Acronimi, glossario e convenzioni
 --------
@@ -27,10 +27,10 @@ Come scegliere
 Non tutte le soluzioni sono applicabili ad ogni contesto. Molto dipende dalla modalità in cui sarà svolta la verifica poteri ed il voto+scrutinio. Di seguito una tabella che (dovrebbe) semplificare la scelta:
 |  |CoVePo|Voto|Soluzione adatta||
 |--|--|--|--|--|
-|  | online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_scrutinio_ita.md) ||
-|  | in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_scrutinio_ita.md) ||
+|  | online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
+|  | in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
 |  | ~~online~~  | ~~in presenza~~ | ~~[CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)~~+**n.d.** |*|
-|  | in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_scrutinio_ita.md) oppure le procedure tradizionali cartacee ||
+|  | in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) oppure le procedure tradizionali cartacee ||
 |  | | |  ||
 * n.d.: non è disponibile una soluzione integrata per il caso di scrutinio on presenza a valle di operazioni di verifica poteri online non è disponibile.
 Sviluppi futuri
