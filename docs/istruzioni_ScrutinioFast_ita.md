@@ -4,7 +4,7 @@
 Panoramica
 --------
 **ScrutinioFast** è un insieme di procedure pensate per velocizzare lo scrutinio di voti assembleari, permettendo anche l'autenticazione del voto attraverso dei codici autorizzativi (secret).
-I codici autorizzativi (o secret) devono essere consegnati ai votanti garantendo la segretezza, cioè che in qualsiasi fase non sia possibile dal singolo secret risalire all'identità del votante. Per la consegna dei secret possono essere usati [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md) (per le assemblee in presenza) o [CoVePoBot](istruzioni_CoVePoBot_ita.md) (per le assemblee online).
+I codici autorizzativi (o secret) devono essere consegnati ai votanti garantendo la segretezza, cioè che in qualsiasi fase non sia possibile dal singolo secret risalire all'identità del votante. Per la consegna dei secret possono essere usati [CoVePoPhys](istruzioni_CoVePoPhys_ita.md) (per le assemblee in presenza) o [CoVePoBot](istruzioni_CoVePoBot_ita.md) (per le assemblee online).
 
 Acronimi, glossario e convenzioni
 --------
