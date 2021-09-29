@@ -26,14 +26,15 @@ Acronimi, glossario e convenzioni
 Come scegliere
 --------
 Non tutte le soluzioni sono applicabili ad ogni contesto. Molto dipende dalla modalità in cui sarà svolta la verifica poteri ed il voto+scrutinio. Di seguito una tabella che (dovrebbe) semplificare la scelta:
-|CoVePo|Voto|Soluzione adatta||
-|--|--|--|--|
-| online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
-| in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
-| ~~online~~  | ~~in presenza~~ | ~~[CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)~~+**n.d.** |*|
-| in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) oppure le procedure tradizionali cartacee ||
+|CoVePo|Voto|Soluzione adatta|
+|--|--|--|
+| online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) |
+| in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) |
+| ~~online~~  | ~~in presenza~~ | ~~[CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)~~+**n.d.** (*)|
+| in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) oppure le procedure tradizionali cartacee |
 
-* n.d.: non è disponibile una soluzione integrata per il caso di scrutinio on presenza a valle di operazioni di verifica poteri online non è disponibile.
+(*) n.d.: non è disponibile una soluzione integrata per il caso di scrutinio on presenza a valle di operazioni di verifica poteri online non è disponibile.
+
 Sviluppi futuri
 --------
 * **Guide**: migliorare le guide
