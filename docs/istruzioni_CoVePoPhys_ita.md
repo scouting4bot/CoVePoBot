@@ -17,7 +17,7 @@ Acronimi, glossario e convenzioni
 * **CoVePo**: *Commissione Verifica Poteri*, è l'organo che si occupa dell'autenticazione ed autorizzazione degli utenti votanti.
 * **Scrutinio**: è la procedura seguita per
 	* la verifica della validità del voto (cioè che abbia votato solo chi ne aveva diritto)
-	* il conteggio dei risultati di una votazione e la verifica della su
+	* il conteggio dei risultati di una votazione
 * **Secret**: è la password che autorizzerà l'utente a votare.
 * **Votante**: è persona che partecipa all'assemblea con diritto di voto.
 
