@@ -1,6 +1,7 @@
 
+
 # CoVePoBot - Ensemble
-![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen) ![License](https://img.shields.io/badge/version-0.2.2-yellow) ![License](https://img.shields.io/github/languages/top/scouting4bot/CoVePoBot)
+![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen) ![License](https://img.shields.io/badge/version-0.2.3-yellow) ![License](https://img.shields.io/github/languages/top/scouting4bot/CoVePoBot)
 
 Panoramica
 --------
@@ -25,13 +26,13 @@ Acronimi, glossario e convenzioni
 Come scegliere
 --------
 Non tutte le soluzioni sono applicabili ad ogni contesto. Molto dipende dalla modalità in cui sarà svolta la verifica poteri ed il voto+scrutinio. Di seguito una tabella che (dovrebbe) semplificare la scelta:
-|  |CoVePo|Voto|Soluzione adatta||
-|--|--|--|--|--|
-|  | online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
-|  | in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
-|  | ~~online~~  | ~~in presenza~~ | ~~[CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)~~+**n.d.** |*|
-|  | in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) oppure le procedure tradizionali cartacee ||
-|  | | |  ||
+|CoVePo|Voto|Soluzione adatta||
+|--|--|--|--|
+| online  | online  | [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
+| in presenza | online | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) ||
+| ~~online~~  | ~~in presenza~~ | ~~[CoVePoBot](docs/istruzioni_CoVePoBot_ita.md)~~+**n.d.** |*|
+| in presenza | in presenza | [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)+[ScrutinioFast](docs/istruzioni_ScrutinioFast_ita.md) oppure le procedure tradizionali cartacee ||
+
 * n.d.: non è disponibile una soluzione integrata per il caso di scrutinio on presenza a valle di operazioni di verifica poteri online non è disponibile.
 Sviluppi futuri
 --------
@@ -60,7 +61,7 @@ Sviluppi futuri
 		* [ ] prevedere procedure guidate di installazione per qualche piattaforma di hosting gratuita
 * **CoVePoPhys**
 	* migliorare la guida
-		* [ ] istruzioni per il form di verifica poteri
+		* [x] istruzioni per il form di verifica poteri
 	* migliorare la sicurezza
 		* [ ] gestione della cancellazione di una utenza
 * **ScrutinioFast**
@@ -70,6 +71,7 @@ Versione
 --------
 *  v. 0.2.*
 	* non ripetizione OTP e Secret
+	* aggiunta guide per CoVePoBot, CoVePoPhys e ScrutinioFast
 	* aggiornamento README
 *  v. 0.1.*
 	* versione di partenza
