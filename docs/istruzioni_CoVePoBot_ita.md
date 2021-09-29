@@ -20,7 +20,7 @@ Acronimi, glossario e convenzioni
 * **OTP**: *One Time Password*, *numerico*, è una sequenza numerica usa e getta (non è possibile usarla più volte). Viene fornita dalla CoVePo all'utente per convertirla nella password segreta (Secret) da usare in fase di votazione. Questo garantisce la segretezza del voto poiché la CoVePo non sarà in grado di associarlo al votante.
 * **Scrutinio**: è la procedura seguita per
 	* la verifica della validità del voto (cioè che abbia votato solo chi ne aveva diritto)
-	* il conteggio dei risultati di una votazione e la verifica della su
+	* il conteggio dei risultati di una votazione
 * **Secret**: è la password che autorizzerà l'utente a votare.
 * **Votante**: è persona che partecipa all'assemblea con diritto di voto.
 * **URL**: *Uniform Resource Locator* è una sequenza di caratteri che identifica univocamente l'indirizzo di una risorsa (documento, immagine, servizio, API) su una rete ([Wikipedia](https://it.wikipedia.org/wiki/Uniform_Resource_Locator))
