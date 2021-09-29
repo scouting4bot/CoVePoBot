@@ -20,7 +20,7 @@ Procedure Passo Passo
 --------
 Le istruzioni su cosa devono fare gli scrutatori nello svolgimento del loro ruolo.
 ### Prima dell'assemblea
- 1. [Predispongono](#Predisposizione) i moduli di voto.
+ 1. [Predispongono](#predisposizione) i moduli di voto.
  n.b.: tutti i moduli devono avere l'opzione "*Accetta risposte*" bloccata.
  2. Si assicurano che la CoVePo abbia predisposto la distribuzione dei codici personali di voto (detti *secret*). Ad esempio con [CoVePoPhys](istruzioni_CoVePoPhys_ita.md) per assemblee in presenza oppure con [CoVePoBot](istruzioni_CoVePoBot_ita.md) per assemblee online.
 ### In assemblea
