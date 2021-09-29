@@ -1,3 +1,4 @@
+
 # ScrutinioFast
 ![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen)
 
@@ -8,31 +9,54 @@ I codici autorizzativi (o secret) devono essere consegnati ai votanti garantendo
 
 Acronimi, glossario e convenzioni
 --------
-* **CoVePo**: *Commissione Verifica Poteri*, è l'organo che si occupa dell'autenticazione ed autorizzazione degli utenti votanti.
-* **Scrutinio**: è la procedura seguita per
+ - **CoVePo**: *Commissione Verifica Poteri*, è l'organo che si occupa dell'autenticazione ed autorizzazione degli utenti votanti.
+ - **Scrutinio**: è la procedura seguita per
 	* la verifica della validità del voto (cioè che abbia votato solo chi ne aveva diritto)
-	* il conteggio dei risultati di una votazione e la verifica della su
-* **Votante**: è persona che partecipa all'assemblea con diritto di voto.
+	* il conteggio dei risultati di una votazione
+ -   **Secret**: è la password che autorizzerà l'utente a votare.
+ - **Votante**: è persona che partecipa all'assemblea con diritto di voto.
+
+Procedure Passo Passo
+--------
+Le istruzioni su cosa devono fare gli scrutatori nello svolgimento del loro ruolo.
+### Prima dell'assemblea
+ 1. [Predispongono](#Predisposizione) i moduli di voto.
+ n.b.: tutti i moduli devono avere l'opzione "*Accetta risposte*" bloccata.
+ 2. Si assicurano che la CoVePo abbia predisposto la distribuzione dei codici personali di voto (detti *secret*). Ad esempio con [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md) per assemblee in presenza oppure con [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md) per assemblee online.
+### In assemblea
+ 3. [Predispongono](#Predisposizione) i moduli di voto
+ 4. Quando la presidenza attiva la votazione, devono [attivare](#Gestione_assembleare) il form relativo al punto dell'ordine del giorno.
+ 5. Quando la presidenza chiude la votazione, devono [bloccare](#Gestione_assembleare) il form relativo al punto dell'ordine del giorno. 
+ 6. Richiedono alla CoVePo la lista dei codici (secret) autorizzati per quella votazione.
+ 7. Iniziano la sessione di [scrutinio](#Scrutinio) con:
+	 - la verifica dei voti duplicati.
+	 - la verifica dei voti non autorizzati (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
+	 - lo scrutinio (cioè il conteggio delle preferenze per ogni opzione di voto).
+ 8. Comunicano alla presidenza dell'assemblea l'esito del voto.
 
 Predisposizione
 --------
 ### Modulo di voto
-Quanto segue va ripetuto per ogni modulo di voto (form) che sarà necessario nell'assemblea.
+Quanto segue va ripetuto per ogni modulo di voto (detto *form*) che sarà necessario nell'assemblea.
  - **Crea un nuovo form**
- - Inserisci un titolo
- - Inserisci una descrizione
+	 - Inserisci un titolo
+	 - Inserisci una descrizione
  - **Prima domanda**
-	 - come domanda inserisci un testo in cui inviti l'utente ad inserire il suo codice autorizzativo (seret).
+	 - come domanda inserisci un testo in cui inviti l'utente ad inserire il suo codice autorizzativo (detto *secret*).
 	 - nel menù a tendina a destra seleziona l'opzione "*Risposta breve*".
-	 - in basso a destra del box della domanda attiva il campo "*Obbligatorio*". 
-	 - in basso a destra del box della domanda c'è un menù "a kebab" (tre puntini verticali): selezionalo e spunta l'opzione "*Convalida della risposta*".
+	 - in basso a destra del riquadro della domanda devi attivare il campo "*Obbligatorio*". 
+	 - in basso a destra del riquadro della domanda c'è un menù "*a kebab*" (tre puntini verticali): selezionalo e spunta l'opzione "*Convalida della risposta*".
 	 - nelle nuove opzioni che si sono attivate inserisci le regole per la validazione del secret.
 	 esempi:
-		 - **Secret di 6 cifre numerico**: seleziona "*Espressione regolare*" e "*Corrispondenze*" ed aggiungi come patterna il seguente testo
+		 - **Secret di 6 cifre numerico**: seleziona "*Espressione regolare*" e "*Corrispondenze*" ed aggiungi come *pattern* il seguente testo
 			```text
 			^[0-9]{6}$
 			```
-		 - **Secret di 10 cifre alfanumerico** (maiuscole e minuscole): seleziona "*Espressione regolare*" e "*Corrispondenze*" ed aggiungi come patterna il seguente testo
+		 - **Secret di 6 caratteri alfabetici maiuscoli**: seleziona "*Espressione regolare*" e "*Corrispondenze*" ed aggiungi come *pattern* il seguente testo
+			```text
+			^[A-Z]{6}$
+			```
+		 - **Secret di 10 cifre alfanumerico** (maiuscole e minuscole): seleziona "*Espressione regolare*" e "*Corrispondenze*" ed aggiungi come *pattern* il seguente testo
 			```text
 			^[a-zA-Z0-9]{10}$
 			```
@@ -46,12 +70,28 @@ Quanto segue va ripetuto per ogni modulo di voto (form) che sarà necessario nel
 			 - Se si vuole, si può aggiungere una "*Convalida della risposta*" che permette di definire il numero minimo e massimo di opzioni selezionabili.
  - **Foglio di calcolo**
 	 - Seleziona il tab "*Risposte*" dal menù in alto.
+	 - Disattiva l'opzione "*Accetta risposte*" a destra: questo eviterà l'inserimento di valori finché la presidenza di assemblea non avrà avviato la votazione.
+ - **Foglio di calcolo**
+	 - Seleziona il tab "*Risposte*" dal menù in alto.
 	 - Seleziona l'icona di *Google Fogli* (è un quadrato verde con una croce bianca): ti creerà un foglio di lavoro con le risposte del form. Per pulizia di lavoro, conviene creare un foglio di lavoro per ogni form.
 	 - Aprire il foglio di calcolo associato ai risultati del form: ci dovrebbe essere un foglio di calcolo nominato "*Risposte del modulo 1*".
 	 - Aggiungere due fogli:
 		 -  *Autenticazione e Scrutinio*: qui verranno fatte le operazioni di validazione ed autenticazione dei voti e lo scrutinio vero e proprio.
 		 - *Elenco secret*: qui verranno elencati i secret autorizzati dalla Verifica Poteri.
 
+Gestione assembleare
+--------
+### Attivare e disattivare la sessione di voto (*form*)
+Gli scrutatori devono avere la possibilità di avviare/bloccare la votazione. Questo permette di ricevere i voti solo dopo che la presidenza dell'assemblea ha autorizzato il punto dell'ordine del giorno ed allo stesso tempo evita eventuali votazioni aggiuntive successive alla chiusura del voto od allo scrutinio.
+ - **Autorizzare la votazione**: quando la presidenza dell'assemblea apre il punto dell'ordine del giorno relativo alla votazione.
+	 - Seleziona il tab "*Risposte*" dal menù in alto.
+	 - Attiva l'opzione "*Accetta risposte*" a destra.
+ - **Bloccare la votazione**: quando la presidenza dell'assemblea chiude ufficialmente le votazioni relative al form e chiede di avviare lo scrutinio.
+	 - Seleziona il tab "*Risposte*" dal menù in alto.
+	 - Disattiva l'opzione "*Accetta risposte*" a destra: questo eviterà l'inserimento di voti successivo alla chiusura del punto all'ordine del giorno.
+
+Scrutinio
+--------
 ### Verifica voti duplicati
 Evidenzierà i secret utilizzati per più di una votazione. Sarà a carico dello scrutatore decidere se eliminare tutte le votazioni o se ammettere l'ultima in ordine cronologico.
  - Aprire il foglio **Autenticazione e Scrutinio**
@@ -95,28 +135,3 @@ Evidenzierà i candidati votati con il conteggio delle relative preferenze.
 		```text
 		=COUNTIF('Risposte del modulo 1'!C:C;"*"&G3&"*")
 		```
-
-Procedure
---------
-### Registrazione votante
-
- 1. mi presento in covepo,
- 2. mi registrano nella tabellina
- 3. mi fanno pescare un biglietto da una scatola (tipo pesca di paese, con i foglietti arrotolati nella pasta)
- 4. io votatore inserisco il numero in un tablet (un semplice google form per raccogliere i codici attivi il cui google fogli è accessibile a covepo con diritti di modifica)
-**n.b.: da rivedere**, l'ordine della lista potrebbe associare il votante ed il secret.
- 6. *[facoltativo]* una verifica che i codici inseriti nel form di covepo siano tra quelli messi nella scatola
- 7. voto via google form (un form per ogni votazione)
- 8. covepo consegna agli scrutatori la lista aggiornata di codici attivi
- 9. scrutinio via google fogli con il sistema di controllo dell'altra volta
-
-### Cancellazione votante
-**n.b.: da rivedere, al momento non garantisce la segretezza**, per ora si consiglia di usare la procedura di verifica del numero legale.
-
- 1. consegno in covepo il biglietto col codice
- 2. alla votazione successiva la covepo fornisce agli scrutatori la nuova lista
-### Verifica numero legale
-Usabile anche nel caso un votante sia andato via senza comunicarlo alla CoVePo od abbia perso il proprio secret.
-
- 1. cancelli i risultati del form di verifica poteri e chiedi un nuovo inserimento da parte dei presenti e consideri quella la nuova lista di codici
-**n.b.: da rivedere**, l'url, diventato pubblico, potrebbe essere usato da persone non registrate per autenticare fraudolentemente secret non previsti.
