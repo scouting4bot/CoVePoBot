@@ -22,17 +22,16 @@ Le istruzioni su cosa devono fare gli scrutatori nello svolgimento del loro ruol
 ### Prima dell'assemblea
  1. [Predispongono](#Predisposizione) i moduli di voto.
  n.b.: tutti i moduli devono avere l'opzione "*Accetta risposte*" bloccata.
- 2. Si assicurano che la CoVePo abbia predisposto la distribuzione dei codici personali di voto (detti *secret*). Ad esempio con [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md) per assemblee in presenza oppure con [CoVePoBot](docs/istruzioni_CoVePoBot_ita.md) per assemblee online.
+ 2. Si assicurano che la CoVePo abbia predisposto la distribuzione dei codici personali di voto (detti *secret*). Ad esempio con [CoVePoPhys](istruzioni_CoVePoPhys_ita.md) per assemblee in presenza oppure con [CoVePoBot](istruzioni_CoVePoBot_ita.md) per assemblee online.
 ### In assemblea
- 3. [Predispongono](#Predisposizione) i moduli di voto
- 4. Quando la presidenza attiva la votazione, devono [attivare](#Gestione_assembleare) il form relativo al punto dell'ordine del giorno.
- 5. Quando la presidenza chiude la votazione, devono [bloccare](#Gestione_assembleare) il form relativo al punto dell'ordine del giorno. 
- 6. Richiedono alla CoVePo la lista dei codici (secret) autorizzati per quella votazione.
- 7. Iniziano la sessione di [scrutinio](#Scrutinio) con:
-	 - la verifica dei voti duplicati.
-	 - la verifica dei voti non autorizzati (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
-	 - lo scrutinio (cioè il conteggio delle preferenze per ogni opzione di voto).
- 8. Comunicano alla presidenza dell'assemblea l'esito del voto.
+ 3. Quando la presidenza attiva la votazione, devono [attivare](#attivare-la-sessione-di-voto-form) il form relativo al punto dell'ordine del giorno.
+ 4. Quando la presidenza chiude la votazione, devono [bloccare](#disattivare-la-sessione-di-voto-form) il form relativo al punto dell'ordine del giorno. 
+ 5. Richiedono alla CoVePo la lista dei codici (secret) autorizzati per quella votazione.
+ 6. Iniziano la sessione di [scrutinio](#scrutinio) con:
+	 - la [verifica dei voti duplicati](#verifica-voti-duplicati).
+	 - la [verifica dei voti non autorizzati](verifica-voti-non-autorizzati) (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
+	 - lo [scrutinio](#scrutinio-dei-voti) (cioè il conteggio delle preferenze per ogni opzione di voto).
+ 7. Comunicano alla presidenza dell'assemblea l'esito del voto.
 
 Predisposizione
 --------
@@ -81,11 +80,14 @@ Quanto segue va ripetuto per ogni modulo di voto (detto *form*) che sarà necess
 
 Gestione assembleare
 --------
-### Attivare e disattivare la sessione di voto (*form*)
-Gli scrutatori devono avere la possibilità di avviare/bloccare la votazione. Questo permette di ricevere i voti solo dopo che la presidenza dell'assemblea ha autorizzato il punto dell'ordine del giorno ed allo stesso tempo evita eventuali votazioni aggiuntive successive alla chiusura del voto od allo scrutinio.
+### Attivare la sessione di voto (*form*)
+Gli scrutatori devono avere la possibilità di avviare la votazione. Questo permette di ricevere i voti solo dopo che la presidenza dell'assemblea ha autorizzato il punto dell'ordine del giorno.
+
  - **Autorizzare la votazione**: quando la presidenza dell'assemblea apre il punto dell'ordine del giorno relativo alla votazione.
 	 - Seleziona il tab "*Risposte*" dal menù in alto.
 	 - Attiva l'opzione "*Accetta risposte*" a destra.
+### Disattivare la sessione di voto (*form*)
+Gli scrutatori devono avere la possibilità di bloccare la votazione. Questo evita che il votante esprima la propria preferenza successivamente alla chiusura del voto od allo scrutinio.
  - **Bloccare la votazione**: quando la presidenza dell'assemblea chiude ufficialmente le votazioni relative al form e chiede di avviare lo scrutinio.
 	 - Seleziona il tab "*Risposte*" dal menù in alto.
 	 - Disattiva l'opzione "*Accetta risposte*" a destra: questo eviterà l'inserimento di voti successivo alla chiusura del punto all'ordine del giorno.
