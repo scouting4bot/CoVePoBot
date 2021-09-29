@@ -58,7 +58,9 @@ Sviluppi futuri
 		* [ ] test
 	* installazione
 		* [ ] prevedere procedure guidate di installazione per qualche piattaforma di hosting gratuita
-* **CoVePoBot**
+* **CoVePoPhys**
+	* migliorare la guida
+		* [ ] istruzioni per il form di verifica poteri
 	* migliorare la sicurezza
 		* [ ] gestione della cancellazione di una utenza
 * **ScrutinioFast**
