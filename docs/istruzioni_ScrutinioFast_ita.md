@@ -30,7 +30,7 @@ Le istruzioni su cosa devono fare gli scrutatori nello svolgimento del loro ruol
  6. Iniziano la sessione di [scrutinio](#scrutinio) con:
 	 - la [verifica dei voti duplicati](#verifica-voti-duplicati).
 	 - la [verifica dei voti non autorizzati](#verifica-voti-non-autorizzati) (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
-	 - lo [scrutinio](#scrutinio-dei-voti) (cioè il conteggio delle preferenze per ogni opzione di voto).
+	 - il [conteggio dei voti](#conteggio-dei-voti) (cioè il conteggio delle preferenze per ogni opzione di voto).
  7. Comunicano alla presidenza dell'assemblea l'esito del voto.
 
 Predisposizione
@@ -121,7 +121,7 @@ Evidenzierà i secret non autorizzati dalla Verifica Poteri. Sarà a carico dell
 		=FILTER('Risposte del modulo 1'!B:B;IFERROR(VLOOKUP('Risposte del modulo 1'!B:B;'Elenco secret'!A:A;1;0);TRUE))
 		```
 
-### Scrutinio dei voti
+### Conteggio dei voti
 Evidenzierà i candidati votati con il conteggio delle relative preferenze.
  - Aprire il foglio *Autenticazione e Scrutinio*
 	 - nella casella G2 incollare il seguente testo:
