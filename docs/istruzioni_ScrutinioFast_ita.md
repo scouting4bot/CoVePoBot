@@ -29,7 +29,7 @@ Le istruzioni su cosa devono fare gli scrutatori nello svolgimento del loro ruol
  5. Richiedono alla CoVePo la lista dei codici (secret) autorizzati per quella votazione.
  6. Iniziano la sessione di [scrutinio](#scrutinio) con:
 	 - la [verifica dei voti duplicati](#verifica-voti-duplicati).
-	 - la [verifica dei voti non autorizzati](verifica-voti-non-autorizzati) (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
+	 - la [verifica dei voti non autorizzati](#verifica-voti-non-autorizzati) (cioè se ci sono voti con secret che non appaiono nella lista fornita dalla CoVePo).
 	 - lo [scrutinio](#scrutinio-dei-voti) (cioè il conteggio delle preferenze per ogni opzione di voto).
  7. Comunicano alla presidenza dell'assemblea l'esito del voto.
 
