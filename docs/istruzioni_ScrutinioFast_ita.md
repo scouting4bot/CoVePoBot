@@ -38,6 +38,7 @@ Predisposizione
 ### Modulo di voto
 Quanto segue va ripetuto per ogni modulo di voto (detto *form*) che sarà necessario nell'assemblea.
  - **Crea un nuovo form**
+	 - Concorda con la CoVePo il formato dei codici personali (secret): lunghezza e composizione (alfanumerico, numerico, alfabetico maiuscolo, etc).
 	 - Inserisci un titolo
 	 - Inserisci una descrizione
  - **Prima domanda**
