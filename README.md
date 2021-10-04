@@ -1,11 +1,12 @@
 
 
+
 # CoVePoBot - Ensemble
 ![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen) ![License](https://img.shields.io/badge/version-0.2.3-yellow) ![License](https://img.shields.io/github/languages/top/scouting4bot/CoVePoBot)
 
 Panoramica
 --------
-**CoVePoBot - Ensemble** è un supporto pensato per la digitalizzazione delle assemblee associative.
+**CoVePoBot - Ensemble** è un supporto pensato per la digitalizzazione delle assemblee associative. Nasce nell'ottica di costruire strumenti semlici ed accessibili a chiunque, sia come votatore e sia come organizzatore.
 Esso si divide in diverse offerte:
 
  - **CoVePoBot**: applicazione web in python ([flask](https://flask.palletsprojects.com/)) per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in **assemblee online**. CoVePoBot permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse. Non è ottimizzato per le assemblee in presenza (in questi casi si suggerisce l'uso delle procedure tradizionali o, in caso di scrutinio automatizzato, quanto riportato per [CoVePoPhys](docs/istruzioni_CoVePoPhys_ita.md)).
@@ -61,10 +62,15 @@ Sviluppi futuri
 	* installazione
 		* [ ] prevedere procedure guidate di installazione per qualche piattaforma di hosting gratuita
 * **CoVePoPhys**
+	* registrazione
+		* [ ] snellire la fase di registrazione (la parte tradizionale)
+		* [ ] snellire la registrazione dei codici. Codici a barre o qr? Magari con lettore e card riusabili.
 	* migliorare la guida
 		* [x] istruzioni per il form di verifica poteri
 	* migliorare la sicurezza
-		* [ ] gestione della cancellazione di una utenza
+		* [x] gestione della cancellazione di una utenza
+		* [ ] dissociare ordine di inserimento ed ordine di registrazione del votante
+		* [ ] cambio paradigma. Per snellire la covepo eliminare i codici random e metter numero di tessera. Dubbi: come anonimizzo? Posso validare e non registrare l'input nel form? Come evito che qualcun altro voti col mio codice?
 * **ScrutinioFast**
 	* [ ] template su foglio di calcolo per lo scrutinio
 
