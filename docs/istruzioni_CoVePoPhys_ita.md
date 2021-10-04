@@ -1,17 +1,20 @@
 
-# CoVePoPhys
-![License](https://img.shields.io/badge/status-not%20ready-red)
 
-**n.b. la procedura è ancora vulnerabile e da revisionare**, non è pronta per un uso effettivo.
+
+# CoVePoPhys
+ ![License](https://img.shields.io/badge/status-work%20in%20progress-yellowgreen)
 
 Panoramica
 --------
-**CoVePoPhys** è un insieme di procedure pensate per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee in presenza che richiedano voto digitalizzato con [ScrutinioFast](istruzioni_ScrutinioFast_ita.md). **Non è ottimizzato per le assemblee online**. CoVePoPhys permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
+**CoVePoPhys** è un insieme di procedure pensate per lo svolgimento delle funzioni di Verifica Poteri (CoVePo) in assemblee in presenza che richiedano voto digitalizzato con [ScrutinioFast](istruzioni_ScrutinioFast_ita.md). **Non è consigliabile per le assemblee online**.
+
+CoVePoPhys permette di fornire ai votanti un codice autorizzativo da usare per il voto, garantendo a questi la segretezza e l'impossibilità di associare la loro identità con le preferenze espresse.
+
+Caratteristiche:
 * Non necessita di installazione di nuovo software
 * Si basa sulla piattaforma Google, ma può essere esportato su altri servizi analoghi (form+foglio di calcolo)
 * Produce una lista di "secret" (una password segreta)
-* Permette alla CoVePo di ottenere
-  * la lista di "secret" attivati dagli utenti.
+* Permette alla CoVePo di ottenere una lista di "secret" degli utenti autorizzati da utilizzare per la validazione dei voti (in forma anonima).
 
 Acronimi, glossario e convenzioni
 --------
@@ -27,13 +30,15 @@ Procedure Passo Passo
 Le istruzioni su cosa devono fare i membri della CoVePo nello svolgimento del loro ruolo.
 
 ### Prima dell'assemblea
- 1. [Predispongono](#predisposizione) i moduli (detti *form*) di verifica poteri, la lista dei codici personali da consegnare (detti *secret*) ed i contenitori per l'assegnazione dei secret.
+ 1. Preparano il registro degli accessi su cui registrare l'ingresso dei votanti e le deleghe di cui usufruiscono durante il voto. Il registro delle presenze può essere gestito nelle modalità tradizionali con un foglio excel od un database (e.g.: Access): questa fase non è oggetto di questo progetto (per ora).
  n.b.: il modulo deve avere l'opzione "*Accetta risposte*" bloccata.
+  2. [Predispongono](#predisposizione) il modulo (detti *form*) per la raccolta dei codici personali (detti *secret*) attivati, il modulo di verifica poteri, i foglietti/cartoncini colorati con i *secret* da consegnare e l'area per la gestione del flusso di votatori.
+
 ### In assemblea
- 2. [Registrano i votanti](#registrazione-votante) e consegnano i secret di voto.
- 3. Quando una singola votazione è dichiarata chiusa dalla presidenza di assemblea, comunicano agli scrutatori [la lista di *secret* autorizzati per quella votazione](#estrazione-secret-abilitati).
- 4. Quando un votante lascia l'assemblea, devono procedere istantaneamente alla [cancellazione del votante](#cancellazione-votante).
- 6. Qualora fosse necessario, possono coordinare la [verifica poteri e del numero legale](#verifica-numero-legale).
+  1. [Registrano i votanti](#registrazione-votante), consegnano i secret di voto e li fanno inserire nel form .
+  2. Quando una singola votazione è dichiarata chiusa dalla presidenza di assemblea, comunicano agli scrutatori [la lista di *secret* autorizzati per quella votazione](#estrazione-secret-abilitati).
+  3. Quando un votante lascia l'assemblea, devono procedere istantaneamente alla [cancellazione del votante](#cancellazione-votante).
+  4. Qualora fosse necessario, possono coordinare la [verifica poteri e del numero legale](#verifica-numero-legale).
 
 Predisposizione
 --------
@@ -41,13 +46,13 @@ Oltre all'ordinario materiale, la CoVePo dovrà avere a disposizione:
 
  - un tablet con connessione ad internet
  - un ampio contenitore per ogni votazione da svolgere
- - dei foglietti colorati (un colore per ogni votazione da svolgere).
+ - dei foglietti/cartoncini colorati (un colore per ogni votazione da svolgere).
 
 Ogni (form di) votazione richiederà un secret diverso. Per comodità conviene associare un colore ad ogni votazione, così da ridurre la confusione negli utenti.
  1. Concordare con gli scrutatori il formato dei codici personali (*secret*): lunghezza e composizione (alfanumerico, numerico, alfabetico maiuscolo, etc).
  2. Creazione di una lista di codici *secret* nel formato concordato. Va creata una lista diversa per ogni votazione.
  3. Concordare con gli scrutatori  il colore associato ad ogni singolo form di voto.
- 4. Preparare dei bigliettini riportando un codice (il secret) in ognuno. Ogni bigliettino dovrebbe avere associato il colore della votazione in cui va usato (può essere lo sfondo del cartoncino od il colore usato per scriverlo).
+ 4. Preparare i foglietti/cartoncini riportando un codice (il secret) in ognuno. Per evitare l'effetto ambigramma, conviene sottolineare la scritta (così da indicare il "sotto"). Ogni bigliettino dovrebbe avere associato il colore della votazione in cui va usato (può essere lo sfondo del cartoncino od il colore usato per scriverlo).
  5. Creazione form di verifica poteri
 	 - Seleziona il tab "*Risposte*" dal menù in alto.
 	 - Disattiva l'opzione "*Accetta risposte*" a destra: questo eviterà l'inserimento di valori finché la registrazione in CoVePo non sarà aperta.
@@ -92,13 +97,13 @@ Gestione votanti
  3. **Assegnazione secret**: il votante deve pescare da ogni contenitore un solo biglietto (due se ha una delega) per ogni colore.
  4. **Attivazione secret**: al votatore viene consegnato il tablet con aperto il form di verifica poteri. Il votatore inserisce tutti i suoi codici (se ha una delega deve ripetere l'inserimento una seconda volta).
 **n.b.: da rivedere**, l'ordine della lista potrebbe associare il votante ed il secret, soprattutto in fase di cancellazione.
- 6. *(facoltativo)* la CoVePo verifica che i codici inseriti nel form di covepo siano tra quelli messi nella scatola (con una formula simile a quella prevista per la [verifica dei voti non autorizzati](istruzioni_ScrutinioFast_ita.md#verifica-voti-non-autorizzati))
+ 5. *(facoltativo)* la CoVePo verifica che i codici inseriti nel form di covepo siano tra quelli messi nella scatola (con una formula simile a quella prevista per la [verifica dei voti non autorizzati](istruzioni_ScrutinioFast_ita.md#verifica-voti-non-autorizzati))
 
 ### Cancellazione votante
 **n.b.: da rivedere, al momento non garantisce la segretezza**, per ora si consiglia di usare la procedura di verifica del numero legale.
 
- 1. Il votante informa la CoVePo che sta lasciando l'assemblea e consegna i biglietit con i *secret* delle votazioni non ancora svolte.
- 2. La CoVePo aggiorna il registro e sottrae dalla lista di codici autorizzati quelli relativi al votante che sta uscendo.
+ 1. Il votante informa la CoVePo che sta lasciando l'assemblea e consegna i foglietti/cartoncini con i *secret* delle votazioni non ancora svolte.
+ 2. La CoVePo aggiorna il registro presenze e sottrae dalla lista di codici autorizzati quelli relativi al votante che sta uscendo.
 
 ### Verifica numero legale
 Usabile anche nel caso un votante sia andato via senza comunicarlo alla CoVePo od abbia perso il proprio secret.
