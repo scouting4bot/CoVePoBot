@@ -53,7 +53,7 @@ Ogni (form di) votazione richiederà un secret diverso. Per comodità conviene a
  2. Creazione di una lista di codici *secret* nel formato concordato. Va creata una lista diversa per ogni votazione.
  3. Concordare con gli scrutatori  il colore associato ad ogni singolo form di voto.
  4. Preparare i foglietti/cartoncini riportando un codice (il secret) in ognuno. Per evitare l'effetto ambigramma, conviene sottolineare la scritta (così da indicare il "sotto"). Ogni bigliettino dovrebbe avere associato il colore della votazione in cui va usato (può essere lo sfondo del cartoncino od il colore usato per scriverlo).
- 5. Creazione form di verifica poteri
+ 5. Creazione form per la raccolta dei codici personali (detti *secret*)
 	 - Seleziona il tab "*Risposte*" dal menù in alto.
 	 - Disattiva l'opzione "*Accetta risposte*" a destra: questo eviterà l'inserimento di valori finché la registrazione in CoVePo non sarà aperta.
 	- Inserisci un titolo
@@ -77,7 +77,8 @@ Ogni (form di) votazione richiederà un secret diverso. Per comodità conviene a
 				^[a-zA-Z0-9]{10}$
 				```
 	    - ripeti per ogni colore.
- 6. Versare i bigliettini nei contenitori. Ogni contenitore conterrà tutti i biglietti relativi ad solo colore.
+ 6. Form di verifica poteri: si può creare analogamente al form per la raccolta dei codici personali
+ 7. Versare i bigliettini nei contenitori. Ogni contenitore conterrà tutti i biglietti relativi ad solo colore.
 
 Estrazione secret abilitati
 --------
@@ -86,6 +87,8 @@ Estrazione secret abilitati
 	 - Seleziona l'icona di *Google Fogli* (è un quadrato verde con una croce bianca): ti creerà un foglio di lavoro con le risposte del form. Per pulizia di lavoro, conviene creare un foglio di lavoro per ogni form.
 	 - Aprire il foglio di calcolo associato ai risultati del form: ci dovrebbe essere un foglio di calcolo nominato "*Risposte del modulo 1*".
 	 - Ogni colonna corrisponde alla lista di secret di un colore diverso (1° coloere > colonna A, 2° colore > colonna B, etc).
+ - verifica: nel foglio di calcolo relativo alla raccolta dei secret, si può inserire delle formule di controllo della validità dei codici. **TODO**
+
 
 Gestione votanti
 --------
