@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask
 from logging.config import dictConfig, fileConfig
 from CoVePoBot.application.utils import fromJsonToDict, getListOfFiles
@@ -10,7 +11,7 @@ dictConfig(fromJsonToDict('CoVePoBot/static/conf/logger.json'))
 app = Flask(__name__)
 
 # Add a configuration
-app.config.from_json('static/conf/settings.json')
+app.config.from_file('static/conf/settings.json', load=json.load)
 
 # Get configuration from JSON
 app_config = fromJsonToDict('CoVePoBot/static/conf/app.json')

@@ -1,30 +1,12 @@
 {
-  "timeout": "9000",
-  "jaws.delete.oncomplete": "true",
-  "sw.enqueue.queue": "swmanager.callback.queue",
-  "ne.sms.account": "6762",
-  "ne.sms.body": "",
-  "ne.sms.sender": "JAWS",
-  "ne.sms.provider": "twilio",
-  "security.disable.cxf.wsdl.wadl": "true",
-  "ds.jaws.nodeid": "0",
-  "componentName": "JawsDeviceManagerFlows",
-  "http.max.conn.per.host": "100",
-  "jaws.core.url": "http://localhost:20901/cxf/jaws",
-  "di.devices.url": "http://localhost:20201/cxf/device-inventory/devices",
-  "dm.enqueue.command.url": "http://localhost:20202/cxf/device-manager/commands",
-  "dm.update.desired.properties.url": "http://localhost:20202/cxf/device-manager/mirror/desired",
-  "ne.send.sms.url": "http://localhost:20401/cxf/ne/sms",
-  "logging.pattern.console": "%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ}|%-5.5p|%thread|AIP|%X{tenant}|%X{transaction-id}|%X{platform-transaction-id}|%c{1}|%M|%m%replace(%xException){'\r\n',' \\n'}%n",
-  "logging.level.com.accenture": "{{ logging_level_package }}",
-  "logging.level.root": "{{ logging_level_root }}",
-  "dm.enqueue.command.notifyLabelValue": "software-manager",
-  "caller.validator": {
-    {
-      "zero_trust_caller_validation" "|",
-      "default('true'",
-      "true)"
-    }
-  },
-  "timeout.validator": "14400000"
+  "app_full_name": "CoVePoBot",
+  "app_short_name": "cvpb",
+  "DATABASE_TYPE": "mysql",
+  "domain": "www.mysite.com",
+  "MYSQL_DATABASE_DB": "myDBname",
+  "MYSQL_DATABASE_HOST": "my.db.host.it",
+  "MYSQL_DATABASE_PASSWORD": "myDBpsw",
+  "MYSQL_DATABASE_PORT": 3306,
+  "MYSQL_DATABASE_USER": "myDBuser",
+  "use_db": "True"
 }

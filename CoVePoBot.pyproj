@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,7 +17,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>CoVePoBot</Name>
     <RootNamespace>CoVePoBot</RootNamespace>
-    <InterpreterId>MSBuild|cvpb|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
+    <Compile Include="CoVePoBot\__init__.py" />
     <Compile Include="CoVePoBot\views.py" />
   </ItemGroup>
   <ItemGroup>
@@ -65,12 +67,22 @@
     <Folder Include="CoVePoBot\static\" />
     <Folder Include="CoVePoBot\static\conf\" />
     <Folder Include="CoVePoBot\static\sql\" />
+    <Folder Include="CoVePoBot\templates\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="cvpb\">
       <Id>cvpb</Id>
       <Version>3.7</Version>
       <Description>cvpb (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.9</Version>
+      <Description>env (Python 3.9 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
