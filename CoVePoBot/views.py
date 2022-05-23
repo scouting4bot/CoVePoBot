@@ -378,22 +378,22 @@ def convertOtp(vote_id, otp):
 
     #validate vote_id
     if vote_id is None or vote_id == '' or extractDictValue(vote_id, vote_session_list) is None:
-        result = "Votazione non valida"
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", "", "", 409
+        alert = "Votazione non valida. Accertati che sia tutto corretto per votare alla "+vote_id+"."
+        return "", "", alert, 409
     #validate otp
     elif otp is None or otp == '':
-        result = "Codice otp mancante"
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", "", "", 400
+        alert = "Codice otp mancante. Accertati che sia tutto corretto per votare alla "+vote_id+"."
+        return "", "", alert, 400
     #check that the otp exists
     elif extractDictValue(otp, vote_session_list[vote_id]['otps']) is None or vote_session_list[vote_id]['otps'][otp] == 'expired':
-        result = "Codice otp non valido"
-        return result + ". Accertati che sia tutto corretto per votare alla "+vote_id+".", "", "", 403
+        alert = "Codice otp non valido. Accertati che sia tutto corretto per votare alla "+vote_id+"."
+        return "", "", alert, 403
     #convert otp into a secret
     else:
         secret = getSecret(vote_id, otp, 10)
-
+        
         # Check if the secret is duplicated
-        if secret in vote_session_list[vote_id]['secrets'][secret]:
+        if extractDictValue(secret, vote_session_list[vote_id]['secrets']) is None:
 
             # Disable otp
             vote_session_list[vote_id]['otps'][otp] = 'expired'
@@ -402,7 +402,7 @@ def convertOtp(vote_id, otp):
             if manageDB and str(manageDB) == "True":
                 result = ExecuteQueryUpdate('otp', {'vote_id':vote_id,'otp':otp,'nwVal':{'status':'expired'}}, mysql)
                 if result != 1:
-                    return "Errore con DB", "", "", 500
+                    return "", "", "Errore con DB", 500
 
             # Enable secret
             vote_session_list[vote_id]['secrets'][secret] = 'enabled'
@@ -411,11 +411,11 @@ def convertOtp(vote_id, otp):
             if manageDB and str(manageDB) == "True":
                 result = ExecuteQueryInsert('secret', {'vote_id':vote_id,'secret':secret,'status':'enabled','create_date':now()}, mysql)
                 if result != 1:
-                    return "Errore con DB", "", "", 500
+                    return "", "", "Errore con DB", 500
 
         # If the secret is duplicated, return error
         else:
-            return "Errore secret duplicato. Richiedi un bambio di OTP.", "", "", 500
+            return "", "", "Errore secret duplicato. Richiedi un cambio di OTP.", 500
 
         print(vote_session_list)
         return "Operazione eseguita con successo. Per votare alla sessione di voto '"+vote_id+"' il tuo codice sarà: ", secret, "Attenzione! Non sarà possibile riprodurlo nuovamente. Perciò conservalo accuratamente e non perderlo", 200
@@ -438,6 +438,9 @@ def createVoteSession(vote_id, otp_num, get_otp_as_url):
         if isSuccess:
             #update vote_session_list
             vote_session_list[vote_id] = result
+            
+            if otp_num is not None and otp_num != '' and otp_num > 0:
+                otps = createOtps(vote_id, otp_num)
 
             #build response
             response = "Aggiunta la nuova sessione "+vote_id+". "
@@ -512,15 +515,13 @@ def getNewVoteSession(vote_id, otp_num):
         if result != 1:
             return False, '', ''
 
-    if otp_num is None or otp_num == '':
-        return True, {"id":vote_id, "psw":psw, "otps":{}, "secrets":{}, "create_date":create_date}, psw
-    else:
-        otps = createOtps(vote_id, otp_num)
-        return True, {"id":vote_id, "psw":psw, "otps":otps, "secrets":{}, "create_date":create_date}, psw
-
+    return True, {"id":vote_id, "psw":psw, "otps":{}, "secrets":{}, "create_date":create_date}, psw
+    
 
 def createOtps(vote_id, otp_num):
     """ Creates a dictionary with "otp_num" quantity of new otps. """
+    print('=============>'+str(vote_session_list))
+    print('=============>'+str(vote_session_list[vote_id]))
     otps = vote_session_list[vote_id]["otps"]
     newOtps = {}
     i = 0
