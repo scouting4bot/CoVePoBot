@@ -13,11 +13,33 @@
         <!-- For links use the total path "/app/renderwith/template" or a relative path "../renderwith/template" -->
         <br />
         {{ msg }}<b>{{ value }}</b><br />
+
+        <input type="text" value="{{ value }}" id="value">
+        <button onclick="copyButton()">Copia</button>
+
         <p style="color:red">{{ alert }}</p>
     </div>
     <hr />
     <footer>
-        <p>&copy; 2020</p>
+        <p>&copy; 2020-<script>document.write(new Date().getFullYear())</script></p>
     </footer>
+
+
+    <script>
+        function copyButton() {
+          /* Get the text field */
+          var copyText = document.getElementById("value");
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+          /* Copy the text inside the text field */
+          navigator.clipboard.writeText(copyText.value);
+
+          /* Alert the copied text */
+          alert("Valore copiato: " + copyText.value);
+        }
+    </script>
 </body>
 </html>

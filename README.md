@@ -52,7 +52,7 @@ Sviluppi futuri
 		* [ ] test
 	* user-friendly:
 		* [ ] pagina per conversione otp (inserisco OTP ed ottengo il secret senza dover comporre l'url ad-hoc)
-		* [ ] pulsante di copia del secret
+		* [x] pulsante di copia del secret
 		* [ ] evitare 'l' minuscola, per evitare che si confonda con un '1'
 		* [ ] evitare 'O' maiuscola, per evitare che si confonda con uno '0'
 		* [ ] test
