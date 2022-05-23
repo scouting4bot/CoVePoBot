@@ -54,6 +54,9 @@
     <Content Include="CoVePoBot\templates\dashboard_layout.html" />
     <Content Include="CoVePoBot\templates\layout.html" />
     <Content Include="CoVePoBot\templates\dashboard.html" />
+    <Content Include="docs\istruzioni_CoVePoPhys_ita.md" />
+    <Content Include="docs\istruzioni_ScrutinioFast_ita.md" />
+    <Content Include="docs\istruzioni_CoVePoBot_ita.md" />
     <Content Include="README.md" />
     <Content Include="requirements.txt" />
   </ItemGroup>
@@ -68,6 +71,7 @@
     <Folder Include="CoVePoBot\static\conf\" />
     <Folder Include="CoVePoBot\static\sql\" />
     <Folder Include="CoVePoBot\templates\" />
+    <Folder Include="docs\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="cvpb\">

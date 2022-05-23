@@ -40,7 +40,8 @@ Sviluppi futuri
 --------
 * **Guide**: migliorare le guide
 	* [ ] implementare una piccola wiki
-	* [ ] aggiungere alla guida la parte della dashboard e liste csv
+	* [x] aggiungere alla guida la parte della dashboard e liste csv
+	* [ ] specifiche openAPI (es. Swagger) per le API
 * **CoVePoBot**
 	* migliorare la sicurezza
 		* [ ] non gestire la password di amministrazione in chiaro sull'URL

@@ -53,8 +53,19 @@ http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY&otp_as_url=true
   > https://DOMINIO/CoVePoBot/XXX/otp/123456
   > https://DOMINIO/CoVePoBot/XXX/otp/234567
 
+### Dashboard d'amministrazione ###
+* Per facilitare l'amministratore, è disponibile una dashboard dalla grafica essenziale.
+```url
+http://localhost:64823/CoVePoBot/dashboard/XXX/list?element=otps&password=ZZZ
+```
+* Nella dashboard è possibile:
+	* Aggiungere nuovi OTP
+	* Elencare gli OTP ancora attivi con le relative URL di conversione
+	* Elencare i secret attivati
+	* Ottenere le istruzioni per la disattivazione dei secret
+
 ### Recupero della lista di "secret" attivati ###
-* La CoVePo può recuperare la lista dei secret attivati dagli utenti.
+* La CoVePo può recuperare la lista dei secret attivati dagli utenti (CSV).
 ```url
 http://DOMINIO/CoVePoBot/XXX/secrets?password=ZZZ
 ```
@@ -64,7 +75,7 @@ http://DOMINIO/CoVePoBot/XXX/secrets?password=ZZZ
 * Da un secret non è possibile risalite all'OTP convertito
 
 ### Recupero della lista di OTP non convertiti ancora dagli utenti ###
-* La CoVePo può recuperare la lista degli OTP non ancora attivati dagli utenti.
+* La CoVePo può recuperare la lista degli OTP non ancora attivati dagli utenti (CSV).
 ```url
 http://DOMINIO/CoVePoBot/XXX/otps/?password=ZZZ
 ```
