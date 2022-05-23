@@ -56,7 +56,7 @@ http://DOMINIO/CoVePoBot/session?id=XXX&otp_num=YYY&otp_as_url=true
 ### Dashboard d'amministrazione ###
 * Per facilitare l'amministratore, è disponibile una dashboard dalla grafica essenziale.
 ```url
-http://localhost:64823/CoVePoBot/dashboard/XXX/list?element=otps&password=ZZZ
+http://DOMINIO/CoVePoBot/dashboard/XXX/list?element=otps&password=ZZZ
 ```
 * Nella dashboard è possibile:
 	* Aggiungere nuovi OTP
