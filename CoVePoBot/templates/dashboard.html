@@ -13,7 +13,10 @@
     <hr />
     <ul>
         {% for element2show in list2show %}
-        <li>{{element2show}}{% if showurl %} - {{url_base}}{{element2show}}{% endif %}</li>
+        <li>
+            {{element2show}}{% if showurl %} - <input type="text" value="{{url_base}}{{element2show}}" id="value{{element2show}}">
+            <button onclick="copyButton({{element2show}})">Copia</button>{% endif %}
+        </li>
         {% endfor %}
     </ul>
 </div>
